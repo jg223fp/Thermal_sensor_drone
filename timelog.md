@@ -6,3 +6,4 @@
 |Create issues on git|20-11-25|30 min
 |Create Kanbanboard|20-11-25| 2h
 |Create .gitignore||
+|Create project plan|20-11-26|2h              
