@@ -4,14 +4,17 @@ import socket
 import time
 import ubinascii
 import pycom
-import ustruct
+import struct
 
 
 #variables
-pycom.heartbeat(False)
 lora_connected = False
 
-
+#RGB onboardled colors
+pycom.heartbeat(False)
+green = 0x000500
+yellow = 0x090500
+red = 0x050000
 
 
 #LoRa
@@ -26,7 +29,7 @@ app_key = ubinascii.unhexlify('44FC4474848061790EDB15E3689685AB')
 #functions
 def connect_lora():
     global lora_connected
-    pycom.rgbled(0x050500)      #yellow
+    pycom.rgbled(yellow)      #yellow
     count = 0
     try:
         while not lora.has_joined():                #reconnect 3 times else raise error
@@ -38,7 +41,7 @@ def connect_lora():
                 raise Exception("")
 
         print("\nConnected to LoRa\n")
-        pycom.rgbled(0x000500)      #green
+        pycom.rgbled(green)      #green
         lora_connected = True
         time.sleep(0.5)
     except Exception as e:
@@ -49,8 +52,9 @@ def connect_lora():
 while True:
     try:
         #exampel values
-        vin = 11
-        temp = 22
+        vin = 11.31
+        temp = 22.47
+
 
 
 
@@ -60,13 +64,21 @@ while True:
             s = socket.socket(socket.AF_LORA, socket.SOCK_RAW)
             # set the LoRaWAN data rate
             s.setsockopt(socket.SOL_LORA, socket.SO_DR, 5)
+            #remove blocking
+            s.setblocking(False)
+
+        elif temp > 75:
+            alarm = struct.pack(">f", 1)     #must be a payload shorter than length 4 to set of the alarm on TTN
+            s.send(alarm)
+            print("Alarm!")
 
         else:
-            #s.setblocking(True)
-            packet = ustruct.pack('f',vin)     #encode packet to save bandwidht
-            s.send(packet)
-        #    s.setblocking(False)
-        #time.sleep(3)
+            payload = struct.pack(">ff", temp,vin) #encode payload
+            s.send(payload)
+            print(payload)
+            print("Sending payload...")
+
+        time.sleep(2)
 
     except OSError as er:
         print("Connectivity issue: " + str(er))
