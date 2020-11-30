@@ -53,7 +53,7 @@ while True:
     try:
         #exampel values
         vin = 11.31
-        temp = 22.47
+        temp = 22.45
 
 
 
@@ -68,8 +68,8 @@ while True:
             s.setblocking(False)
 
         elif temp > 75:
-            alarm = struct.pack(">f", 1)     #must be a payload shorter than length 4 to set of the alarm on TTN
-            s.send(alarm)
+            alarm = 1     #must be a payload shorter than length 4 to set of the alarm on TTN. Notice: dont send text!
+            s.send(bytes(alarm))
             print("Alarm!")
 
         else:
