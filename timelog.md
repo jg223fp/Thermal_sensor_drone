@@ -13,3 +13,4 @@
 |Writing decoding for payload on TTN|20-11-30|3h|JG
 |Calculate and design voltage divider and measure|20-11-30|2h|PO
 |Morning meeting|20-12-01|40 min|JG & PO
+|Created first version of circuit diagram|20-12-01|2h|PO
