@@ -12,3 +12,4 @@
 |Setting up TTN|20-11-30| 2h|JG
 |Writing decoding for payload on TTN|20-11-30|3h|JG
 |Calculate and design voltage divider and measure|20-11-30|2h|PO
+|Morning meeting|20-12-01|40 min|JG & PO
