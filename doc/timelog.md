@@ -15,3 +15,4 @@
 |Morning meeting|20-12-01|40 min|JG & PO
 |Created first version of circuit diagram|20-12-01|2h|PO
 |Rewrote lora to library|20-12-02|2h|JG
+|Update circuit diagram. Created and sorted folders master. Created and added voltage_measure branch and lib.|20-12-02|1.5h|PO
