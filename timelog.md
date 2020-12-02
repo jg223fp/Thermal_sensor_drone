@@ -14,3 +14,4 @@
 |Calculate and design voltage divider and measure|20-11-30|2h|PO
 |Morning meeting|20-12-01|40 min|JG & PO
 |Created first version of circuit diagram|20-12-01|2h|PO
+|Rewrote lora to library|20-12-02|2h|JG
