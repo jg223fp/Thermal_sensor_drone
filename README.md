@@ -25,6 +25,6 @@ Develop an airbourne product that periodically measures surface temperature to d
 
 [Timelog](/doc/timelog.md)
 
-![Circuit diagram](/doc/images/Circuit diagram.png "Circuit diagram")
+![Circuit diagram](/doc/images/circuit_diagram.png "Circuit diagram")
 
 ## Results
