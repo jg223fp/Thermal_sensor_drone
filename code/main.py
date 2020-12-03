@@ -5,10 +5,10 @@ import time
 import ubinascii
 import machine
 import voltage_measure
-import amg88xx
+import AMG88xx
 
 adc = machine.ADC()             # create an ADC object
-value = adc.channel(pin='P18', attn=adc.ATTN_11DB)        # create an analog pin on P13. 11DB to span over 2.198V.
+value = adc.channel(pin='P18', attn=adc.ATTN_11DB)        # create an analog pin on P18. 11DB to span over 2.198V.
 
 #LoRa
 # create an OTAA authentication parameters, change them to the provided credentials
@@ -18,8 +18,7 @@ app_key = ubinascii.unhexlify('44FC4474848061790EDB15E3689685AB')
 #program starts
 while True:
     try:
-        #exampel values
-        temp = 22.45
+        temp = AMG88xx.temperature()
         Vbat = voltage_measure.Vbat(value)
 
         if not lora.lora_connected or not lora.lora.has_joined():
