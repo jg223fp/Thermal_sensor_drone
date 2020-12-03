@@ -18,3 +18,4 @@
 |Update circuit diagram. Created and sorted folders master.|20-12-02|1h|PO
 |Created and added voltage_measure branch and lib.|20-12-02|0.5h|PO
 |Added content to README.|20-12-02|1h|PO
+|Changed calculation voltage measure. Update circuit diagram.|20-12-03|1h|PO

@@ -23,6 +23,8 @@ Develop an airbourne product that periodically measures surface temperature to d
 
 [Hardware](/doc/hardware.md)
 
+[Test](/doc/test.md)
+
 [Timelog](/doc/timelog.md)
 
 ![Circuit diagram](/doc/img/circuit_diagram.png "Circuit diagram")
