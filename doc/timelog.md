@@ -19,3 +19,7 @@
 |Created and added voltage_measure branch and lib.|20-12-02|0.5h|PO
 |Added content to README.|20-12-02|1h|PO
 |Changed calculation voltage measure. Update circuit diagram.|20-12-03|1h|PO
+|Morning meeting|20-12-03|1h|JG & PO
+|Dreaming about voltage meassure|20-12-03|15 min|PO
+|Git merging and code updates|20-12-03|4h|JG & PO
+|Project discussion with supervisor|20-12-03|15 min|JG & PO
