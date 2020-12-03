@@ -5,6 +5,7 @@ import time
 import ubinascii
 import machine
 import voltage_measure
+import amg88xx
 
 adc = machine.ADC()             # create an ADC object
 value = adc.channel(pin='P18', attn=adc.ATTN_11DB)        # create an analog pin on P13. 11DB to span over 2.198V.
