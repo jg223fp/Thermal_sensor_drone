@@ -18,7 +18,7 @@ app_key = ubinascii.unhexlify('44FC4474848061790EDB15E3689685AB')
 #program starts
 while True:
     try:
-        temp = AMG88xx.temperature()
+        temp = amg88xx.temperature()
         Vbat = voltage_measure.Vbat(value)
 
         if not lora.lora_connected or not lora.lora.has_joined():
