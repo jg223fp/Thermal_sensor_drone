@@ -1,1 +1,1 @@
-![Circuit diagram](/doc/images/Circuit diagram.png "Circuit diagram")
+![Circuit diagram](/doc/img/circuit_diagram.png "Circuit diagram")

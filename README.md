@@ -1,4 +1,4 @@
-![Fire and drone](/doc/images/project_plan_front.jpg "fire_drone")
+![Fire and drone](/doc/img/project_plan_front.jpg "fire_drone")
 
 # Thermal sensor drone
 
@@ -25,6 +25,6 @@ Develop an airbourne product that periodically measures surface temperature to d
 
 [Timelog](/doc/timelog.md)
 
-![Circuit diagram](/doc/images/circuit_diagram.png "Circuit diagram")
+![Circuit diagram](/doc/img/circuit_diagram.png "Circuit diagram")
 
 ## Results
