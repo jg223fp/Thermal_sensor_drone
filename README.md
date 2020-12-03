@@ -1,1 +1,0 @@
-thermal-sensor-drone
