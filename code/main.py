@@ -19,8 +19,8 @@ app_key = ubinascii.unhexlify('44FC4474848061790EDB15E3689685AB')
 while True:
     try:
         #exampel values
-        vin = 11.31
         temp = 22.45
+        Vbat = voltage_measure.Vbat(value)
 
         if not lora.lora_connected or not lora.lora.has_joined():
             lora.connect_lora(app_eui,app_key)
@@ -30,7 +30,7 @@ while True:
             print("Alarm!")
 
         else:
-            lora.send_values(temp,vin)   #send 2 floats
+            lora.send_values(temp,Vbat)   #send 2 floats
 
         time.sleep(2)     # cant be changed? lora fucks up
 
