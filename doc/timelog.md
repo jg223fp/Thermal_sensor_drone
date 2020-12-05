@@ -25,3 +25,5 @@
 |Project discussion with supervisor|20-12-03|15 min|JG & PO
 |Tried moving project to new repository|20-12-04|3,5h|JG
 |Soldered back capasitor in drone|20-12-05|2h|JG
+|Soldered cables on thermal sensor|20-12-05|1h|JG
+|Preparing soldering videoscene|20-12-05|1h|JG
