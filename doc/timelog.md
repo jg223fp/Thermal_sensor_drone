@@ -32,4 +32,5 @@
 |Creating adafruit feed and dashboard|20-12-07|1h|JG
 |Writing IFTTT and adafruit in setup |20-12-07||JG
 |Team meeting. Update kanban, issues.|20-12-07|1h|PO & JG
-|Connected thermal sensor to Pycom. Update circuit diagram|20-12-07|1h|PO & JG
+|Connected thermal sensor to Pycom. Update circuit diagram.|20-12-07|1h|PO & JG
+|Update README with Abstract and Background.|20-12-07|0.5h|PO
