@@ -31,13 +31,13 @@ When registration is completed, navigate to the registred device to retrieve the
 ![app key](/doc/img/TTN4.jpg "app key")
 
 
-Basicly we´re good to go now and can start sending and recieving data from TTN. But due to LoRas limited bandwidht we also need to package our data, and that means we also have to unpack it when it´s recived. There is a variation of different formats to use when packing. The worst example for this beeing strings. It seems to be an unwritten rule never to send strings. Here is a comparison between sending a short, a float and a string:
+Basicly we´re good to go now and can start sending and recieving data from TTN. But due to LoRas limited bandwidht we also need to package our data, and that means we also have to unpack it when it´s recived. There is a variation of different formats to use when packing. The worst example for this beeing strings. It seems to be an unwritten rule never to send strings. Here is a comparison between sending a short, a float and a string after beeing packed with the struct module:
 
 | Format      | Data |Amount of bytes|  Payload in bytes  |
 |:------------- |:---------------:| -------------:|----------:|
-| Short |7           |1| 37         |
-|Float|7.00|4|       37 2e 30 30|
-|String|"seven"|7|22 73 65 76 65 6e 22|
+| Short |7           |2| 00 07         |
+|Float|7.00|4|       40 E0 00 00|
+|String|"seven"|5| 73 65 76 65 6e |
 
 </BR>
 We used Pythons built in struct module.
