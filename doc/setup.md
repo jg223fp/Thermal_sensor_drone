@@ -1,5 +1,5 @@
 # Setup
-We have chosen to use LoRa connection for the data sent by the drone. We know that this may not not be the best solution fot the project beacuse of LoRas limitations in bandwidht. TTN has a fair access policy of 30 seconds per day for uplinks, and 10 messages per day for downlinks. A more suitable solution for us would proberly be a strong WiFi covering the 
+We have chosen to use LoRa connection for the data sent by the drone. We know that this may not be the best solution for the project beacuse of LoRas limitations in bandwidht. TTN has a fair access policy of 30 seconds per day for uplinks, and 10 messages per day for downlinks. A more suitable solution for our scenario would proberly be a strong WiFi covering the 
 waste facility. But this project is also about learning and LoRa is a new and exciting technique. Thats why we still choose to go with it. It also has the advantages of long range, low cost and low power consuption.
 
 
