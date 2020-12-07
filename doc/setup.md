@@ -141,7 +141,7 @@ Now we´re gonna choose what happens when the trigger is set of. Here we gonna u
 ![Create IFTTT](/doc/img/IFTTT4.jpg)</BR>
 ![Create IFTTT](/doc/img/IFTTT5.jpg)</BR>
 
-Now we just need the key for the TTN integration. Get by pressing on the applet, then press the webhooks logo. You will find the key under documentation in the upper right corner. 
+Now we just need the key for the TTN integration. Navigate to the applet and press it, then press the webhooks logo. We will find the key under documentation in the upper right corner. 
 ![Create IFTTT](/doc/img/IFTTT6.jpg)</BR>
 
 
