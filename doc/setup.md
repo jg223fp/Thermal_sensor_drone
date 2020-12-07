@@ -47,6 +47,47 @@ Data is represented as 2 float values, each of 4 bytes. The ">" arrow sets the b
 payload = struct.pack(">ff", value1,value2) #encode payload
 ```
 
+Now we only need to unpack the data when its received in our application on TTN.
+This is done under the tab "Payload formats". The decoder should be written in javascript. As we jet dont know how to write this we googled and found a prewritten decoder that we modified to suit our needs.
+![Payload decoder](/doc/img/TTN4.jpg "Payload decoder")
+
+Here is the code for our payload decoder, it return the two float values that we send but if the payload is shorter than 4 bytes it activates the alarm function meaning a fire has been detected. So instead of sending a string saying "alarm activated", we just send a short payload and then the payload decoder will know what to do. 
+```javascript
+function Decoder(bytes, port) {
+  
+  var payload = bytes.length;
+  
+  if (payload<4) {  // if the payload is shorter than 4 the alarm will be set off
+   var objects = {};
+   var alarm = 'active'; 
+  
+  objects.alarm = alarm;
+  return objects;
+}
+
+  else {
+  
+  var decoded = {};
+  var bits = (bytes[0] << 24) | (bytes[1] << 16) | (bytes[2] << 8) | (bytes[3]);
+  var sign = ((bits >>> 31) == 0) ? 1.0 : -1.0;
+  var e = ((bits >>> 23) & 0xff);
+  var m = (e == 0) ? (bits & 0x7fffff) << 1 : (bits & 0x7fffff) | 0x800000;
+  var f = sign * m * Math.pow(2, e - 150);
+
+  decoded.temperature = +f.toFixed(2);
+
+  var bits = (bytes[4] << 24) | (bytes[5] << 16) | (bytes[6] << 8) | (bytes[7]);
+  var sign = ((bits >>> 31) == 0) ? 1.0 : -1.0;
+  var e = ((bits >>> 23) & 0xff);
+  var m = (e == 0) ? (bits & 0x7fffff) << 1 : (bits & 0x7fffff) | 0x800000;
+  var f = sign * m * Math.pow(2, e - 150);
+
+  decoded.voltage  = +f.toFixed(2);
+
+  return decoded;
+}}
+
+```
 
 
 
