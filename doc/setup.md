@@ -129,7 +129,7 @@ Explenation of  the fields:
 Now we're gonna create two so called applets on IFTTT. Those will take our values from TTN and send them to Adafruit IO. If we had the IFTTT pro version we would only need one applet to do this job but we're cheap and poor students so we only have a free acount. The free acount has a limit of 3 applets so it´s still ok.
 
 First of we need to add what triggers the event
-![Create IFTTT](/doc/img/IFTTT1.jpg =250x "Create IFTTT")</BR>
+![Create IFTTT](/doc/img/IFTTT1.jpg=250x "Create IFTTT")</BR>
 
 There is a lot of services connected to IFTTT. Here we´re gonna use webhooks as a trigger
 ![Create IFTTT](/doc/img/IFTTT2.jpg =250x "Create IFTTT")</BR>
