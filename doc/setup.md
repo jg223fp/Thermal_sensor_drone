@@ -132,17 +132,17 @@ First of we need to add what triggers the event
 ![Create IFTTT](/doc/img/IFTTT1.jpg)</BR>
 
 There is a lot of services connected to IFTTT. Here we´re gonna use webhooks as a trigger
-![Create IFTTT](/doc/img/IFTTT2.jpg =250x "Create IFTTT")</BR>
+![Create IFTTT](/doc/img/IFTTT2.jpg)</BR>
 
 Fill in the eventname used in intergation on TTN
-![Create IFTTT](/doc/img/IFTTT3.jpg =250x "Create IFTTT")</BR>
+![Create IFTTT](/doc/img/IFTTT3.jpg)</BR>
 
 Now we´re gonna choose what happens when the trigger is set of. Here we gonna use Adafruit IO. Before we do this step we need to go to io.adafruit.com and create two feeds. One for voltage and one for temperature. The feeds will then automaticly be visible on IFTTT when selecting what feed to send data to.
-![Create IFTTT](/doc/img/IFTTT4.jpg =250x "Create IFTTT")</BR>
-![Create IFTTT](/doc/img/IFTTT5.jpg =250x "Create IFTTT")</BR>
+![Create IFTTT](/doc/img/IFTTT4.jpg)</BR>
+![Create IFTTT](/doc/img/IFTTT5.jpg)</BR>
 
 Now we just need the key for the TTN integration. Get by pressing on the applet, then press the webhooks logo. You will find the key under documentation in the upper right corner. 
-![Create IFTTT](/doc/img/IFTTT6.jpg =250x "Create IFTTT")</BR>
+![Create IFTTT](/doc/img/IFTTT6.jpg)</BR>
 
 
 
