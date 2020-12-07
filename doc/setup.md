@@ -53,7 +53,7 @@ payload = struct.pack(">ff", value1,value2) #encode payload
 </BR>
 Now we only need to unpack the data when its received in our application on TTN.
 This is done under the tab "Payload formats". The decoder should be written in javascript. As we jet dont know how to write this we googled and found a prewritten decoder that we modified to suit our needs.
-![Payload decoder](/doc/img/TTN4.jpg "Payload decoder")
+![Payload decoder](/doc/img/TTN5.jpg "Payload decoder")
 </BR>
 
 Here is the code for our payload decoder, it return the two float values that we send but if the payload is shorter than 4 bytes it activates the alarm function meaning a fire has been detected. So instead of sending a string saying "alarm activated", we just send a short payload and then the payload decoder will know what to do. 
