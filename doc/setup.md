@@ -3,6 +3,10 @@
 We have chosen to use LoRa connection for the data sent by the drone. We know that this may not be the best solution for the project beacuse of LoRas limitations in bandwidht. TTN has a fair access policy of 30 seconds per day for uplinks, and 10 messages per day for downlinks. A more suitable solution for our scenario would proberly be a strong WiFi covering the 
 waste facility. But this project is also about learning and LoRa is a new and exciting technique. Thats why we still choose to go with it. It also has the advantages of long range, low cost and low power consuption.
 
+## What we gonna do
+Just a short and basic descreption of what we're aiming to do here.
+Our target is to upload values to TTN via LorA. On TTN we will decode the values. After that we will use IFTTT and webhooks to send them further to feeds on adafruit io. If the firealarm is set of we will use......(something)
+
 
 ## Setting up TTN
 Here is a short explenation of how to set up The Things Network(TTN) when sending the data by LoRa.
@@ -107,10 +111,10 @@ We do this by going to the tab integrations. There are a few to choose from.
 We choosed to use IFTTT.
 
 Explenation of  the fields:
-* Create a Process ID – this can be anything you want, it’s a unique identifier for the IFTTT process
-* Create an Event ID – this is what our event within IFTTT will be called, make something up!
-* Key – we will get this from IFTTT after creating the IFTTT app
-* Values- Here we type the name of our payload values that we will send. We can send up to three.
+* Create a Process ID: this can be anything you want, it’s a unique identifier for the IFTTT process
+* Create an Event ID: this is what our event within IFTTT will be called, make something up!
+* Key: we will get this from IFTTT after creating the IFTTT app
+* Values: Here we type the name of our payload values that we will send. We can send up to three.
 
 
 ![integration](/doc/img/TTN7.jpg "integration")
@@ -122,6 +126,19 @@ Explenation of  the fields:
 
 
 ## Setting up IFTTT 
+Now we're gonna create two so called applets on IFTTT. Those will take our values from TTN and send them to Adafruit IO. If we had the IFTTT pro version we would only need one applet to do this job but we're cheap and poor students so we only have a free acount. The free acount has a limit of 3 applets so it´s still ok.
+
+First of we need to add what triggers the event
+![Create IFTTT](/doc/img/IFTTT1.jpg=250x "Create IFTTT")
+
+There is a lot of services connected to IFTTT. Here we´re gonna use webhooks as a trigger
+![Create IFTTT](/doc/img/IFTTT2.jpg=250x "Create IFTTT")
+
+Fill in the eventname used in intergation on TTN
+![Create IFTTT](/doc/img/IFTTT3.jpg=250x "Create IFTTT")
+
+
+
 
 
 

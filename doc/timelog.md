@@ -27,4 +27,7 @@
 |Soldered back capasitor in drone|20-12-05|2h|JG
 |Soldered cables on thermal sensor|20-12-05|1h|JG
 |Preparing soldering videoscene|20-12-05|1h|JG
-|Writing TTN setup|20-12-07|4h|JG
+|Writing TTN setup in setup|20-12-07|4h|JG
+|Creating IFTTT apps|20-12-07|1h|JG
+|Creating adafruit feed and dashboard|20-12-07|1h|JG
+|Writing IFTTT and adafruit in setup |20-12-07||JG
