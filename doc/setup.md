@@ -1,4 +1,7 @@
 # Setup
+We have chosen to use LoRa connection for the data sent by the drone. We know that this may not not be the best solution fot the project beacuse of LoRas limitations in bandwidht. TTN has a fair access policy of 30 seconds per day for uplinks, and 10 messages per day for downlinks. A more suitable solution for us would proberly be a strong WiFi covering the 
+waste facility. But this project is also about learning and LoRa is a new and exciting technique. Thats why we still choose to go with it. It also has the advantages of long range, low cost and low power consuption.
+
 
 ## Setting up TTN
 Here is a short explenation of how to set up The Things Network(TTN) when sending your data by LoRa.
@@ -28,7 +31,7 @@ When registration is completed, navigate to the registred device to retrieve the
 ![app key](/doc/img/TTN4.jpg "app key")
 
 
-
+Basicly we´re good to go now and can start sending and recieving data from TTN. But due to LoRas limited bandwidht we also need to package our data, and that means we have to unpack it when it´s recived. There is a variation of different formats to use when packing.
 
 
 
