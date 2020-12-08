@@ -18,30 +18,37 @@ value = adc.channel(pin='P18', attn=adc.ATTN_11DB)        # create an analog pin
 app_eui = ubinascii.unhexlify('70B3D57ED00390DD')
 app_key = ubinascii.unhexlify('44FC4474848061790EDB15E3689685AB')
 
-
 #variables
 highest_temp = 0
-
+average_temp = 0
+prev_temp = 0
 
 def temperature():
     global highest_temp
+    global average_temp
+    global prev_temp
     i2c = machine.I2C(1)
     sensor = AMG88XX(i2c)
     while True:
-
+        highest_temp = 0
+        average_temp = 0
         utime.sleep(0.2)
         sensor.refresh()
 
         for row in range(8):
             for col in range(8):
-                 if sensor[row, col] > highest_temp:
+                average_temp += sensor[row, col]
+                if sensor[row, col] > highest_temp:
                      highest_temp = sensor[row, col]
+
+        average_temp = average_temp/64
+        if average_temp != 0:
+            prev_temp = average_temp
+
         if highest_temp > 75:
             lora.alarm()        #set of alarm if temperature is to high
             print("Alarm!")
         print(highest_temp)
-
-
 
 def main_program():
     while True:
@@ -52,7 +59,7 @@ def main_program():
                 lora.connect_lora(app_eui,app_key)
 
             else:
-                lora.send_values(highest_temp,Vbat)   #send 2 floats
+                lora.send_values(prev_temp,Vbat)   #send 2 floats
                 time.sleep(5)       # just for testing, remove when shit get real
 
             time.sleep(2)     # cant be changed? lora fucks up
@@ -67,6 +74,5 @@ def main_program():
             pycom.rgbled(0x050500)      #yellow
 
 #program starts
-print("ost")
-_thread.start_new_thread(temperature)
-_thread.start_new_thread(main_program)
+_thread.start_new_thread(temperature, ())
+_thread.start_new_thread(main_program, ())
