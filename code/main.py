@@ -68,5 +68,5 @@ def main_program():
 
 #program starts
 print("ost")
-#_thread.start_new_thread(temperature)
-#_thread.start_new_thread(main_program)
+_thread.start_new_thread(temperature)
+_thread.start_new_thread(main_program)
