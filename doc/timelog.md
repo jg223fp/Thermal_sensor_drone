@@ -36,4 +36,5 @@
 |Update README with Abstract and Background.|20-12-07|0.5h|PO
 |Added threading. Tested functions and LoRA.|20-12-08|2h|JG & PO
 |Work and investigation with push notifications.|20-12-09|2h|PO
-|Tested and configured push notifications Adafruit-IFTTT-iOS app.|20-12-08|0.5|PO
+|Tested and configured push notifications Adafruit-IFTTT-iOS app.|20-12-08|0.5h|PO
+|Tested notifications to Slack from IFTTT.   |20-12-08   |1h   |PO   |
