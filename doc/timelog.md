@@ -38,3 +38,4 @@
 |Work and investigation with push notifications.|20-12-09|2h|PO
 |Tested and configured push notifications Adafruit-IFTTT-iOS app.|20-12-08|0.5h|PO
 |Tested notifications to Slack from IFTTT.   |20-12-08   |1h   |PO   |
+|Weekly meeting with Jonas.   |20-12-10   |15 min   |PO & JG   |
