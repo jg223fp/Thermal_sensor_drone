@@ -24,8 +24,7 @@ app_eui = ubinascii.unhexlify('70B3D57ED00390DD')
 app_key = ubinascii.unhexlify('44FC4474848061790EDB15E3689685AB')
 
 #variables
-highest_temp = 0
-previous_temp = 0
+sensor_temp = 0
 
 #functions
 def alarm_sound():
@@ -36,9 +35,8 @@ def alarm_sound():
         ch.duty_cycle(0)
         time.sleep(0.05)
 
-def temperature():
-    global highest_temp
-    global previous_temp
+def read_temperature():
+    global sensor_temp
     i2c = machine.I2C(1)
     sensor = AMG88XX(i2c)
     while True:
@@ -48,17 +46,24 @@ def temperature():
 
         for row in range(8):
             for col in range(8):
-                if sensor[row, col] > highest_temp:
+                if sensor[row, col] > highest_temp:     #select the highest of the sensors 64 detected temperatures
                      highest_temp = sensor[row, col]
 
-        previous_temp = average_temp # this is
+        sensor_temp = average_temp # updates sensor_temp with new value, highest_temp cant be the value we send beacuse it is reset every cycle
 
-        if highest_temp > 75:
-            lora.alarm()        #set of alarm if temperature is to high
+        if highest_temp > 75 and not alarm_active:       #set of alarm if temperature is to high
+            alarm_active = True
             print("Alarm!")
+            _thread.start_new_thread(alarm_sound, ())    #starts alarmsound
+            while True:          # sends alarm messeges by LoRa
+                lora.alarm()
+                time.sleep(2)
+
         print(highest_temp)
 
 def main_program():
+    global lora.lora_connected
+
     while True:
         try:
 
@@ -67,7 +72,7 @@ def main_program():
 
             else:
                 vbat = 11.54 #voltage_measure.vbat(value)
-                lora.send_values(prev_temp,vbat)   #send 2 floats
+                lora.send_values(sensor_temp,vbat)   #send 2 floats
                 time.sleep(5)       # just for testing, remove when shit get real
 
             time.sleep(2)     # cant be changed? lora fucks up
@@ -82,5 +87,5 @@ def main_program():
             pycom.rgbled(0x050500)      #yellow
 
 #program starts
-_thread.start_new_thread(temperature, ())
+_thread.start_new_thread(read_temperature, ())
 _thread.start_new_thread(main_program, ())

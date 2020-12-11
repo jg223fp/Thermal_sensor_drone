@@ -53,7 +53,7 @@ def alarm():
             print("Alarm!")
             pycom.rgbled(red)
 
-def send_values(temp,vin):
-    payload = struct.pack(">ff", temp,vin) #encode payload
+def send_values(temp,vbat):
+    payload = struct.pack(">ff", temp,vbat) #encode payload
     s.send(payload)
     print("Sending payload...")
