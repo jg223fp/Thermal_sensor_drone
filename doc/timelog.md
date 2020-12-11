@@ -41,3 +41,4 @@
 |Weekly meeting with Jonas.   |20-12-10   |15 min   |PO & JG   |
 |Looking in to how to mount sensor and pycom on drone|20-12-11|1,5h|JG
 |Wrote alarm function and cleaned code in main.py|20-12-11|2h|JG
+|Added comments in program, soldered voltagedivider and soldered cables on buzzer|20-12-11|2h|JG
