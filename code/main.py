@@ -10,8 +10,13 @@ import machine
 import utime
 import _thread
 
+#pins
 adc = machine.ADC()             # create an ADC object
 value = adc.channel(pin='P18', attn=adc.ATTN_11DB)        # create an analog pin on P18. 11DB to span over 2.198V.
+
+# set up pin PWM timer for output to buzzer
+tim = PWM(0, frequency=0)
+ch = tim.channel(2, pin="P19", duty_cycle=0)
 
 #LoRa
 # create an OTAA authentication parameters, change them to the provided credentials
@@ -22,6 +27,15 @@ app_key = ubinascii.unhexlify('44FC4474848061790EDB15E3689685AB')
 highest_temp = 0
 average_temp = 0
 prev_temp = 0
+
+#functions
+def alarm_sound():
+    while True:
+        tim = PWM(0, frequency=500)
+        ch.duty_cycle(0.9)
+        time.sleep(0.03)
+        ch.duty_cycle(0)
+        time.sleep(0.05)
 
 def temperature():
     global highest_temp
@@ -53,13 +67,13 @@ def temperature():
 def main_program():
     while True:
         try:
-            Vbat = 11.54# voltage_measure.Vbat(value)
 
             if not lora.lora_connected or not lora.lora.has_joined():
                 lora.connect_lora(app_eui,app_key)
 
             else:
-                lora.send_values(prev_temp,Vbat)   #send 2 floats
+                vbat = 11.54 #voltage_measure.vbat(value)
+                lora.send_values(prev_temp,vbat)   #send 2 floats
                 time.sleep(5)       # just for testing, remove when shit get real
 
             time.sleep(2)     # cant be changed? lora fucks up
