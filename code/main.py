@@ -14,7 +14,7 @@ import _thread
 adc = machine.ADC()             # create an ADC object
 value = adc.channel(pin='P18', attn=adc.ATTN_11DB)        # create an analog pin on P18. 11DB to span over 2.198V.
 
-# set up pin PWM timer for output to buzzer
+#set up pin PWM timer for output to alarm buzzer
 tim = PWM(0, frequency=0)
 ch = tim.channel(2, pin="P19", duty_cycle=0)
 
@@ -43,7 +43,6 @@ def read_temperature():
         highest_temp = 0
         utime.sleep(0.2)
         sensor.refresh()
-
         for row in range(8):
             for col in range(8):
                 if sensor[row, col] > highest_temp:     #select the highest of the sensors 64 detected temperatures
@@ -58,7 +57,6 @@ def read_temperature():
             while True:          # sends alarm messeges by LoRa
                 lora.alarm()
                 time.sleep(2)
-
         print(highest_temp)
 
 def main_program():
@@ -66,26 +64,23 @@ def main_program():
 
     while True:
         try:
-
-            if not lora.lora_connected or not lora.lora.has_joined():
+            if not lora.lora_connected or not lora.lora.has_joined():       #if lora is´nt connected, connect it.
                 lora.connect_lora(app_eui,app_key)
 
             else:
-                vbat = 11.54 #voltage_measure.vbat(value)
-                lora.send_values(sensor_temp,vbat)   #send 2 floats
+                vbat = 11.54 #voltage_measure.vbat(value)       #get new battery voltage value
+                lora.send_values(sensor_temp,vbat)      #send 2 floats
                 time.sleep(5)       # just for testing, remove when shit get real
 
-            time.sleep(2)     # cant be changed? lora fucks up
+            time.sleep(2)     # cant be changed? lora breaks
 
         except OSError as er:
             print("Connectivity issue: " + str(er))
             lora.lora_connected = False
-            pycom.rgbled(0x050500)      #yellow
         except Exception as ex:
-            print("General error: " + str(ex)) # give us some idea on what went wrong
+            print("General error: " + str(ex))
             lora.lora_connected = False
-            pycom.rgbled(0x050500)      #yellow
 
 #program starts
-_thread.start_new_thread(read_temperature, ())
-_thread.start_new_thread(main_program, ())
+_thread.start_new_thread(read_temperature, ())      #start temperature sensoring in a thread
+_thread.start_new_thread(main_program, ())      #start the main program in a thread
