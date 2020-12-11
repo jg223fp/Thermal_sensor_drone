@@ -39,3 +39,5 @@
 |Tested and configured push notifications Adafruit-IFTTT-iOS app.|20-12-08|0.5h|PO
 |Tested notifications to Slack from IFTTT.   |20-12-08   |1h   |PO   |
 |Weekly meeting with Jonas.   |20-12-10   |15 min   |PO & JG   |
+|Looking in to how to mount sensor and pycom on drone|20-12-11|1,5h|JG
+|Wrote alarm function and cleaned code in main.py|20-12-11|2h|JG
