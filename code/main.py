@@ -25,8 +25,7 @@ app_key = ubinascii.unhexlify('44FC4474848061790EDB15E3689685AB')
 
 #variables
 highest_temp = 0
-average_temp = 0
-prev_temp = 0
+previous_temp = 0
 
 #functions
 def alarm_sound():
@@ -39,25 +38,20 @@ def alarm_sound():
 
 def temperature():
     global highest_temp
-    global average_temp
-    global prev_temp
+    global previous_temp
     i2c = machine.I2C(1)
     sensor = AMG88XX(i2c)
     while True:
         highest_temp = 0
-        average_temp = 0
         utime.sleep(0.2)
         sensor.refresh()
 
         for row in range(8):
             for col in range(8):
-                average_temp += sensor[row, col]
                 if sensor[row, col] > highest_temp:
                      highest_temp = sensor[row, col]
 
-        average_temp = average_temp/64
-        if average_temp != 0:
-            prev_temp = average_temp
+        previous_temp = average_temp # this is
 
         if highest_temp > 75:
             lora.alarm()        #set of alarm if temperature is to high
