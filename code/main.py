@@ -54,7 +54,7 @@ def read_temperature():
 
         sensor_temp = highest_temp # updates sensor_temp with new value, highest_temp cant be the value we send beacuse it is reset every cycle
 
-        if highest_temp > 75 :       #set of alarm if temperature is to high
+        if highest_temp > 50 :       #set of alarm if temperature is to high
             alarm_active = True
 
         print(highest_temp)
