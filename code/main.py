@@ -9,10 +9,12 @@ from amg88xx import AMG88XX
 import machine
 import utime
 import _thread
+from machine import Pin
+from machine import PWM
 
 #pins
 adc = machine.ADC()             # create an ADC object
-value = adc.channel(pin='P18', attn=adc.ATTN_11DB)        # create an analog pin on P18. 11DB to span over 2.198V.
+voltage_pin = adc.channel(pin='P18', attn=adc.ATTN_11DB)        # create an analog pin on P18. 11DB to span over 2.198V.
 
 #set up pin PWM timer for output to alarm buzzer
 tim = PWM(0, frequency=0)
@@ -48,7 +50,7 @@ def read_temperature():
                 if sensor[row, col] > highest_temp:     #select the highest of the sensors 64 detected temperatures
                      highest_temp = sensor[row, col]
 
-        sensor_temp = average_temp # updates sensor_temp with new value, highest_temp cant be the value we send beacuse it is reset every cycle
+        sensor_temp = highest_temp # updates sensor_temp with new value, highest_temp cant be the value we send beacuse it is reset every cycle
 
         if highest_temp > 75 and not alarm_active:       #set of alarm if temperature is to high
             alarm_active = True
@@ -60,15 +62,14 @@ def read_temperature():
         print(highest_temp)
 
 def main_program():
-    global lora.lora_connected
-
+    #global lora.lora_connected
     while True:
         try:
             if not lora.lora_connected or not lora.lora.has_joined():       #if lora is´nt connected, connect it.
                 lora.connect_lora(app_eui,app_key)
 
             else:
-                vbat = 11.54 #voltage_measure.vbat(value)       #get new battery voltage value
+                vbat = voltage_measure.vbat_measure(voltage_pin.value())       #get new battery voltage value
                 lora.send_values(sensor_temp,vbat)      #send 2 floats
                 time.sleep(5)       # just for testing, remove when shit get real
 

@@ -5,4 +5,4 @@ def vbat_measure(vbat_value):
     resolution_12bits = vref/4096       #(2^12 = 4096)
     vin = vbat_value * resolution_12bits
     vbat = vin / (10000/(47000+10000))
-    return vbat
+    return round(vbat,2)
