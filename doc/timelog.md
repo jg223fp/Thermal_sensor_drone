@@ -42,3 +42,5 @@
 |Looking in to how to mount sensor and pycom on drone|20-12-11|1,5h|JG
 |Wrote alarm function and cleaned code in main.py|20-12-11|2h|JG
 |Added comments in program, soldered voltagedivider and soldered cables on buzzer|20-12-11|2h|JG
+|Mounted all components into connectionbox|20-12-13|6h|JG
+|Mounted connectionbox on drone and did some troubleshooting in the code |20-12-13|2h|JG
