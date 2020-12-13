@@ -27,17 +27,19 @@ app_key = ubinascii.unhexlify('44FC4474848061790EDB15E3689685AB')
 
 #variables
 sensor_temp = 0
+alarm_active = False
 
 #functions
 def alarm_sound():
     while True:
         tim = PWM(0, frequency=500)
         ch.duty_cycle(0.9)
-        time.sleep(0.03)
+        time.sleep(0.07)
         ch.duty_cycle(0)
-        time.sleep(0.05)
+        time.sleep(0.07)
 
 def read_temperature():
+    global alarm_active
     global sensor_temp
     i2c = machine.I2C(1)
     sensor = AMG88XX(i2c)
@@ -52,13 +54,9 @@ def read_temperature():
 
         sensor_temp = highest_temp # updates sensor_temp with new value, highest_temp cant be the value we send beacuse it is reset every cycle
 
-        if highest_temp > 75 and not alarm_active:       #set of alarm if temperature is to high
+        if highest_temp > 75 :       #set of alarm if temperature is to high
             alarm_active = True
-            print("Alarm!")
-            _thread.start_new_thread(alarm_sound, ())    #starts alarmsound
-            while True:          # sends alarm messeges by LoRa
-                lora.alarm()
-                time.sleep(2)
+
         print(highest_temp)
 
 def main_program():
@@ -67,6 +65,14 @@ def main_program():
         try:
             if not lora.lora_connected or not lora.lora.has_joined():       #if lora is´nt connected, connect it.
                 lora.connect_lora(app_eui,app_key)
+
+
+            elif alarm_active:
+                print("Alarm!")
+                _thread.start_new_thread(alarm_sound, ())    #starts alarmsound
+                while True:          # sends alarm messeges by LoRa
+                    lora.alarm()
+                    time.sleep(2)
 
             else:
                 vbat = voltage_measure.vbat_measure(voltage_pin.value())       #get new battery voltage value
