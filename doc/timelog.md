@@ -45,3 +45,4 @@
 |Mounted all components into connectionbox|20-12-13|6h|JG
 |Mounted connectionbox on drone and did some troubleshooting in the code |20-12-13|2h|JG
 |Team meeting and next week planning.   |20-12-13   |1h   |PO & JG   |
+|Created requirements.   |20-12-14   |2h   |PO & JG   |
