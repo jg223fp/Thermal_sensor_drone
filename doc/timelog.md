@@ -46,3 +46,8 @@
 |Mounted connectionbox on drone and did some troubleshooting in the code |20-12-13|2h|JG
 |Team meeting and next week planning.   |20-12-13   |1h   |PO & JG   |
 |Created requirements.   |20-12-14   |2h   |PO & JG   |
+|Troubleshooting battery measure.   |20-12-16   |1h   |PO & JG   |
+|Test drone and alarm function and troubleshooting power supply.   |20-12-16   |3h   |PO & JG   |
+|Filming and testing sensor range, update requirements and testing doc.   |20-12-16   |2h   |PO & JG   |
+|Changed MQTT and notifications to Ubidots. Created dashboard and events.   |20-12-16   |1h   |PO & JG   |
+|Separating code and cleanup.   |20-12-16   |1h   |PO & JG   |
