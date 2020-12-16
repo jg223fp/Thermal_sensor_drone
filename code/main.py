@@ -13,8 +13,9 @@ from machine import Pin
 from machine import PWM
 
 #pins
-adc = machine.ADC()             # create an ADC object
+adc = machine.ADC(bits=12)             # create an ADC object
 voltage_pin = adc.channel(pin='P18', attn=adc.ATTN_11DB)        # create an analog pin on P18. 11DB to span over 2.198V.
+adc.vref(2198)
 
 #set up pin PWM timer for output to alarm buzzer
 tim = PWM(0, frequency=0)
@@ -27,20 +28,26 @@ app_key = ubinascii.unhexlify('44FC4474848061790EDB15E3689685AB')
 
 #variables
 sensor_temp = 0
+alarm_temp = 0
+alarm_timer = 0
 alarm_active = False
 
 #functions
 def alarm_sound():
-    while True:
+    while alarm_active:
         tim = PWM(0, frequency=500)
         ch.duty_cycle(0.9)
         time.sleep(0.07)
         ch.duty_cycle(0)
         time.sleep(0.07)
+    ch.duty_cycle(0)
+
 
 def read_temperature():
     global alarm_active
     global sensor_temp
+    global alarm_temp
+    global alarm_timer
     i2c = machine.I2C(1)
     sensor = AMG88XX(i2c)
     while True:
@@ -52,12 +59,19 @@ def read_temperature():
                 if sensor[row, col] > highest_temp:     #select the highest of the sensors 64 detected temperatures
                      highest_temp = sensor[row, col]
 
-        sensor_temp = highest_temp # updates sensor_temp with new value, highest_temp cant be the value we send beacuse it is reset every cycle
+        sensor_temp = highest_temp      # updates sensor_temp with new value, highest_temp cant be the value we send beacuse it is reset every cycle
 
-        if highest_temp > 50 :       #set of alarm if temperature is to high
+        if highest_temp > 25 and not alarm_active :       #set of alarm if temperature is to high
+            alarm_temp = highest_temp
             alarm_active = True
+            alarm_timer()
 
-        print(highest_temp)
+def alarm_timer():
+    global alarm_active
+    start = time.time()
+    while alarm_active:
+        if time.time() - start > 10:
+            alarm_active = False
 
 def main_program():
     #global lora.lora_connected
@@ -66,20 +80,19 @@ def main_program():
             if not lora.lora_connected or not lora.lora.has_joined():       #if lora is´nt connected, connect it.
                 lora.connect_lora(app_eui,app_key)
 
-
             elif alarm_active:
-                print("Alarm!")
                 _thread.start_new_thread(alarm_sound, ())    #starts alarmsound
-                while True:          # sends alarm messeges by LoRa
-                    lora.alarm()
-                    time.sleep(2)
+                print("Alarm!")
+                lora.send_values(alarm_temp,vbat)      #send 2 floats
 
             else:
-                vbat = voltage_measure.vbat_measure(voltage_pin.value())       #get new battery voltage value
+                vbat = voltage_measure.vbat_measure(voltage_pin.voltage())       #get new battery voltage value
                 lora.send_values(sensor_temp,vbat)      #send 2 floats
-                time.sleep(5)       # just for testing, remove when shit get real
 
-            time.sleep(2)     # cant be changed? lora breaks
+
+            start = time.time()
+            while time.time() - start < 3:      #slow the program for 3 seconds so LoRa dosen´t crash
+                pass
 
         except OSError as er:
             print("Connectivity issue: " + str(er))
