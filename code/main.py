@@ -29,7 +29,6 @@ app_key = ubinascii.unhexlify('44FC4474848061790EDB15E3689685AB')
 #variables
 sensor_temp = 0
 alarm_temp = 0
-alarm_timer = 0
 alarm_active = False
 
 #functions
@@ -42,12 +41,7 @@ def alarm_sound():
         time.sleep(0.07)
     ch.duty_cycle(0)
 
-
 def read_temperature():
-    global alarm_active
-    global sensor_temp
-    global alarm_temp
-    global alarm_timer
     i2c = machine.I2C(1)
     sensor = AMG88XX(i2c)
     while True:
@@ -58,19 +52,26 @@ def read_temperature():
             for col in range(8):
                 if sensor[row, col] > highest_temp:     #select the highest of the sensors 64 detected temperatures
                      highest_temp = sensor[row, col]
+        return highest_temp
 
+def check_temperature():
+    global alarm_active
+    global sensor_temp
+    global alarm_temp
+    while True:
+        highest_temp = read_temperature()
         sensor_temp = highest_temp      # updates sensor_temp with new value, highest_temp cant be the value we send beacuse it is reset every cycle
-
         if highest_temp > 25 and not alarm_active :       #activate alarm if temperature is to high
             alarm_temp = highest_temp
             alarm_active = True
-            alarm_timer()
+            _thread.start_new_thread(alarm_sound, ())    #starts alarmsound in a new thread
+            _thread.start_new_thread(alarm_timer, ([3]))    # starts a timer in a new thread witch will turn of alarm after x seconds.
 
-def alarm_timer():
+def alarm_timer(alarm_time):
     global alarm_active
     start = time.time()
     while alarm_active:
-        if time.time() - start > 10:
+        if time.time() - start > alarm_time:
             alarm_active = False
 
 def main_program():
@@ -81,14 +82,12 @@ def main_program():
                 lora.connect_lora(app_eui,app_key)
 
             elif alarm_active:
-                _thread.start_new_thread(alarm_sound, ())    #starts alarmsound
                 print("Alarm!")
                 lora.send_values(alarm_temp,vbat)      #send 2 floats
 
             else:
                 vbat = voltage_measure.vbat_measure(voltage_pin.voltage())       #get new battery voltage value
                 lora.send_values(sensor_temp,vbat)      #send 2 floats: sensor temperature and battery voltage
-
 
             start = time.time()
             while time.time() - start < 3:      #slow the program for 3 seconds so LoRa dosen´t crash
@@ -102,5 +101,5 @@ def main_program():
             lora.lora_connected = False
 
 #program starts
-_thread.start_new_thread(read_temperature, ())      #start temperature sensoring in a thread
+_thread.start_new_thread(check_temperature, ())      #start temperature sensoring in a thread
 _thread.start_new_thread(main_program, ())      #start the main program in a thread
