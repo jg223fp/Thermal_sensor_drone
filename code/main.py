@@ -61,7 +61,7 @@ def read_temperature():
 
         sensor_temp = highest_temp      # updates sensor_temp with new value, highest_temp cant be the value we send beacuse it is reset every cycle
 
-        if highest_temp > 25 and not alarm_active :       #set of alarm if temperature is to high
+        if highest_temp > 25 and not alarm_active :       #activate alarm if temperature is to high
             alarm_temp = highest_temp
             alarm_active = True
             alarm_timer()
@@ -87,7 +87,7 @@ def main_program():
 
             else:
                 vbat = voltage_measure.vbat_measure(voltage_pin.voltage())       #get new battery voltage value
-                lora.send_values(sensor_temp,vbat)      #send 2 floats
+                lora.send_values(sensor_temp,vbat)      #send 2 floats: sensor temperature and battery voltage
 
 
             start = time.time()
