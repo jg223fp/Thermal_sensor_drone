@@ -15,7 +15,7 @@ The project aimed to develop a simple, yet effective, IoT-device that could help
 |4    |Display data.               |Display data on a web-based dashboard. Delay may not be more than 10 seconds.   |2   | |3
 |5    |Continued measurement of temperature on surface.  |Measuring must be functional from a vertical height of min 5m.    |1    | ||1, 8
 |6    |Activate alarm on pre-defined temperature.| If the temperature reach above a preset level, an alarm function shall be activated. A buzzer shall sound in the device and a notification is sent to a platform used by the supervisors. The buzzer shall be deactivated after 10 seconds.    |1 | |3, 6
-|7   |Continue No. 5 after buzzer.   |After the buzzer is deactivated the device shall continue report new temperatures.   |   |1   |   |5, 6
+|7   |Continue No. 5 after buzzer.   |After the buzzer is deactivated the device shall continue report new temperatures.   |1   |   |5, 6   |
 |8    |Power hardware from battery.   | All included hardware should be powered by a battery.      |1    | |
 |9   |Casing protection.   |Shall be a minimum of IP22 to sustain some solid particles and liquids.   |1   |
 |10   |Automated detection routing.   |Schedule automated flying route to monitor area periodically.   |3   ||1
