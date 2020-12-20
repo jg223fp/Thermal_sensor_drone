@@ -52,8 +52,6 @@ This is the sensor that will be used for monitoring temperatures. It detects 64(
 
 Measured temperature will decrease with distance. To be able to detect temperatures as "low" as possible and also have a wide coverage area the drone should fly approximately 4 meters above ground. With a viewing angle of 60° we calculate:
 
-Viewing angle for half of the pyramid: 30°
-
 x = 4 * tan(30°) = 2,3 m
 
 A = (2,3 * 2)² = 21,2 m²
