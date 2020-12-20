@@ -43,10 +43,12 @@ To measure the battery level we needed to scale the voltage down from 12 to bene
 
 
 ## Adafruit AMG8833 IR Thermal camera
-This is the sensor that will be used for monitoring temperatures. It detects 64(8x8) individual temperatures by IR with a framerate of up to 10Hz. The tempereatures is returned in arrays via I2C communication. It can detect temperatures in a range from 0 to 80 °C on the paper. However, we did discover temperatures up to 138 °C. The viewing angle is 60 ° and detections distance is up to 7 meters. 
+This is the sensor that will be used for monitoring temperatures. It detects 64(8x8) individual temperatures by IR with a framerate of up to 10Hz. The tempereatures is returned in arrays via I2C communication. It can detect temperatures in a range from 0 to 80 °C on the paper. However, we did discover temperatures up to 138 °C. The viewing angle is 60 ° and detections distance is up to 7 meters. While testing it did detected temperatures on 7 meters but they where very incorrect. The temperature drops ¤¤¤¤¤¤¤¤¤¤¤¤
+
 4.5 mA power consumption 
 
-
+![thermal sensor](/doc/img/thermal1.jpg "thermal sensor")
+![thermal sensor](/doc/img/thermal2.jpg "thermal sensor")
 
 
 
