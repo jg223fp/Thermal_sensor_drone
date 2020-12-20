@@ -54,7 +54,8 @@ Measured temperature will decrease with distance. To be able to detect temperatu
 
 Viewing angle for half of the pyramid: 30°
 
-x = 4 * tan(30°) = 2,3 m </BR>
+x = 4 * tan(30°) = 2,3 m
+
 A = (2,3 * 2)² = 21,2 m²
 
 ![sensor area](/doc/img/sensor_area_calculation.jpg "sensor_area_calculation")
