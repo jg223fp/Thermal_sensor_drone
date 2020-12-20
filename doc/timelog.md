@@ -51,3 +51,4 @@
 |Filming and testing sensor range, update requirements and testing doc.   |20-12-16   |2h   |PO & JG   |
 |Changed MQTT and notifications to Ubidots. Created dashboard and events.   |20-12-16   |1h   |PO & JG   |
 |Separating code and cleanup.   |20-12-16   |1h   |PO & JG   |
+|Writing in hardware.md and adding images|20-12-20|4h 30 min|JG
