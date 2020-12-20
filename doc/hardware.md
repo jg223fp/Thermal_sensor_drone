@@ -25,7 +25,7 @@
 
 
 ## Cheerson CX-20 drone
-The drone we have used for this project is a Cheerson CX-20. It is a quite big drone but is still affordable. We needed a drone with some lift capacity so that we could mount our device underneath. There is no specified number of how much this drone can carry but there are videos on youtube where it flies with weights of 1.5 Kg.
+The drone we have used for this project is a Cheerson CX-20. It is a quite big drone but is still affordable. We needed a drone with some lift capacity so that we could mount our device underneath. There is no specified number of how much this drone can carry but there are videos on youtube where it flies with weights of 1.5 Kg. We will aim at making our device lightweight but still protective.
 This drone also fits us perfectly beacuse of the pins it has underneath. It has both regulated 5V and 12V straight from the battery. This will be used to power out device and to monitor the battery level.
 It also has a stock gopro camera mount that we can use to attach the device.
 
@@ -53,8 +53,14 @@ This is the sensor that will be used for monitoring temperatures. It detects 64(
 
 
 
-Notes: 
+## The build
+To protect the electronics in case of bad weather or a crash we needed to put it all in a casing. For this a junction box with IP66 classing was used.
+It turned out that the sensor and pycom developmentboard was fitting perfect inside. A small hole for the sensor was made in the bootom of the box using a rotating file. Small screws was used to attatch it and then some hotglue was placed on the screws on the outside. The buzzer was hot glued on the outside. 
+As mentioned earlier we needed to keep things lightweight in order to make the battery last longer and for the drone to be able to fly with the device attatched. We know the drone was built for flying with gopro cameras attatched to it using the mount underneath. Gopro cameras weight somewhere between 100 and 200 g with housing and SD-card depending on what model. Our device ended up with a weight of 186 g so it should be fine.  
 
-Device weight: 186 g
 
-Gopros with housings 100 - 200 g
+![Components](/doc/img/build1.jpg "Components")
+![Sensor hole](/doc/img/build3.jpg "Sensor hole")
+![Inside](/doc/img/build4.jpg "Inside junction box")
+![Complete](/doc/img/complete1.jpg "The completed device")
+![Attatched](/doc/img/complete2.jpg "Attached to drone")
