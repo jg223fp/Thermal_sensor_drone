@@ -52,3 +52,4 @@
 |Changed MQTT and notifications to Ubidots. Created dashboard and events.   |20-12-16   |1h   |PO & JG   |
 |Separating code and cleanup.   |20-12-16   |1h   |PO & JG   |
 |Writing in hardware.md and adding images|20-12-20|4h 30 min|JG
+|Weekly planning|20-12-20||JG & PO
