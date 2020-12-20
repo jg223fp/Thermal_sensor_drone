@@ -11,7 +11,7 @@
 |Junction box IP65|1|65 
 |10 kΩ resistor|1|1 
 |47 kΩ resistor|1|1 
-|Gopro camera mount|1|Owbed(35) 
+|Gopro camera mount|1|Owned(35) 
 |Breadboard jumper wire male to male|10|32 
 |Breadboard jumper wire female to female|4|13 
 |Total||516 SEK
