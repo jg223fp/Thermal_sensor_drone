@@ -35,9 +35,11 @@ It also has a stock gopro camera mount that we can use to attach the device.
 
 
 ## Voltage divider
-To measure the battery level we needed to scale the voltage down from 12 to beneath 3.3V witch is the maximum tolerance for input on the lopy pins. This is done with a voltage divider. It is a simple circuit containg two resistors with calculated values.
+To measure the battery level we needed to scale the voltage down from 12 to beneath 3.3V witch is the maximum tolerance for input on the lopy pins. This is done with a voltage divider. It is a simple circuit containg two resistors with calculated values. 
 
-
+![Voltage divider](/doc/img/vd1.jpg "Voltage divider")
+![Voltage divider](/doc/img/vd2.jpg "Voltage divider")
+![Voltage divider](/doc/img/vd3.jpg "Voltage divider")
 
 
 
