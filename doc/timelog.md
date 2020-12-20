@@ -54,3 +54,6 @@
 |Writing in hardware.md and adding images|20-12-20|4,5h   |JG
 |Weekly planning|20-12-20|1h|JG & PO
 |Calculated sensor area and made image visualization.   |20-12-20   |1,5h   |PO   |
+|Update circuit diagram and moved calculations to hardware.md.   |20-12-20   |0,5h   |PO   |
+|Distance/degrees diagram. Added image and text to hardware.md.   |20-12-20   |1h   |PO   |
+|Updated overall text hardware.md.   |20-12-20   |1h   |PO   |
