@@ -52,7 +52,7 @@ This is the sensor that will be used for monitoring temperatures. It detects 64(
 
 Measured temperature will decrease with distance. The diagram below shows the result from a test that was performed with a set heat generation of 160°C. With the support of this data our belief is that the sensor should be able to detect a heat generation of 150°C from a distance of 4 meters by setting the alarm threshold at 40°C. Since paper self ignites at about 185°C (https://www.dafo.se/Arkiv/Faktabank/Brandrisker-och-riskhantering/Brandteori/Varme/) this configuration should give an eligible function.
 
- ![thermal sensor| 50%](/doc/img/degrees_distance_diagram.png)
+ ![thermal sensor](/doc/img/degrees_distance_diagram.png)
 
 With a viewing angle of 60° we calculate:
 
