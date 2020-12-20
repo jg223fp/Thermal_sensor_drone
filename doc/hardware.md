@@ -26,7 +26,7 @@
 
 ## Cheerson CX-20 drone
 The drone we have used for this project is a Cheerson CX-20. It is a quite big drone but is still affordable. We needed a drone with some lift capacity so that we could mount our device underneath. There is no specified number of how much this drone can carry but there are videos on youtube where it flies with weights of 1.5 Kg. We will aim at making our device lightweight but still protective.
-This drone also fits us perfectly beacuse of the pins it has underneath. It has both regulated 5V and 12V straight from the battery. This will be used to power out device and to monitor the battery level.
+This drone also fits us perfectly beacuse of the pins it has underneath. It has both regulated 5V and 12V straight from the battery. This will be used to power our device and to monitor the battery level.
 It also has a stock gopro camera mount that we can use to attach the device.
 
 ![Drone](/doc/img/drone.jpg "Drone")
