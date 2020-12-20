@@ -2,32 +2,28 @@
 ## Components list
 |Component  | Quantity   |Price (SEK) |
 |:----|:------------- |:---------------|
-|Cheerson CX-20 drone |1|Owned(2990)
-|Pycom expansionboard 3.1 |1|Borrowed(189)
-|Pycom Lopy 4 |1|Borrowed(465)
-|Pycom Lora antenna|1|Borrowed(130)
+|Cheerson CX-20 drone (pre-owned) |1    |(2990)
+|Pycom expansionboard 3.1 (provded by LNU)   |1   |(189)
+|Pycom Lopy 4  (provded by LNU)  |1  |(465)
+|Pycom LoRa antenna (provded by LNU)  |1   |(130)
 |Adafruit AMG8833 IR Thermal camera|1|366
 |Buzzer|1|38
 |Junction box IP65|1|65
-|10 kΩ resistor|1|1
-|47 kΩ resistor|1|1
-|Gopro camera mount|1|Owned(35)
-|Breadboard jumper wire male to male|10|32
-|Breadboard jumper wire female to female|4|13
+|10kΩ resistor|1|1
+|47kΩ resistor|1|1
+|GoPro camera mount (pre-owned)|1   |(35)
+|Breadboard jumper wire male to male  |10   |32
+|Breadboard jumper wire female to female    |4    |13
 |Total||516 SEK
 
 
 </BR>
 
 
-## Circuit diagram
-![Circuit diagram](/doc/img/circuit_diagram.png "Circuit diagram")
-
-
 ## Cheerson CX-20 drone
-The drone we have used for this project is a Cheerson CX-20. It is a quite big drone but is still affordable. We needed a drone with some lift capacity so that we could mount our device underneath. There is no specified number of how much this drone can carry but there are videos on youtube where it flies with weights of 1.5 Kg. We will aim at making our device lightweight but still protective.
-This drone also fits us perfectly beacuse of the pins it has underneath. It has both regulated 5V and also 12V straight from the battery. This will be used to power our device and to monitor the battery level.
-It also has a stock gopro camera mount that we can use to attach the device.
+The drone we have used for this project is a Cheerson CX-20. It's quite a big drone but still affordable. We needed a drone with some lift capacity so that we could mount our device underneath. There is no data on how much it can carry but there are videos on Youtube where it flies with weights of 1.5kg. We aimed to make our device lightweight but still resistant to some liquid.
+The drone also suited us perfectly because of the pin connections underneath. It has both regulated 5V and also 12V straight from the battery. We used these to power our device and also to monitor the drones battery level.
+It also had a GoPro camera mount that we could use to attach the device.
 
 ![Drone](/doc/img/drone.jpg "Drone")
 ![Pins](/doc/img/pins.jpg "Drone pins")
@@ -35,7 +31,16 @@ It also has a stock gopro camera mount that we can use to attach the device.
 
 
 ## Voltage divider
-To measure the battery level we needed to scale the voltage down from 12 to beneath 3.3V witch is the maximum tolerance for input on the lopy pins. This is done with a voltage divider. It is a simple circuit containg two resistors with calculated values.
+To measure the battery level we had to scale the voltage down from 12V to beneath 3.3V which is the maximum tolerance for input on the LoPy pins. We solved this issue with a voltage divider. It's a simple circuit containing two resistors with calculated values.
+
+![Circuit diagram](/doc/img/circuit_diagram.png "Circuit diagram")
+
+VREF calculation: </BR>
+VREF = 12 * (10000 / 47000 + 10000) = 2.198 V
+
+VBAT calculation: </BR>
+PIN_voltage = PIN18 input / 1000 </BR>
+VBAT = PIN_voltage / (10000 / 47000 + 10000)
 
 ![Voltage divider](/doc/img/vd1.jpg "Voltage divider")
 ![Voltage divider](/doc/img/vd2.jpg "Voltage divider")
@@ -50,9 +55,9 @@ This is the sensor that will be used for monitoring temperatures. It detects 64(
 ![thermal sensor](/doc/img/thermal1.jpg "thermal sensor")
 ![thermal sensor](/doc/img/thermal2.jpg "thermal sensor")
 
-Measured temperature will decrease with distance. The diagram below shows the result from a test that was performed with a set heat generation of 160°C. With the support of this data our belief is that the sensor should be able to detect a heat generation of 150°C from a distance of 4 meters by setting the alarm threshold at 40°C. Since paper self ignites at about 185°C (https://www.dafo.se/Arkiv/Faktabank/Brandrisker-och-riskhantering/Brandteori/Varme/) this configuration should give an eligible function.
+Measured temperature will decrease with distance. The diagram below shows the result from a test that was performed with a set heat generation of 160°C. With the support of this data our belief is that the sensor should be able to detect a heat generation of 150°C from a distance of 4 meters by setting the alarm threshold at 40°C. Since paper self ignites at about 185°C (https://www.dafo.se/Arkiv/Faktabank/Brandrisker-och-riskhantering/Brandteori/Varme/) this configuration should give an eligible function. This will also prevent false alarm when the drone is flying very near the surface.
 
- ![thermal sensor](/doc/img/degrees_distance_diagram.png)
+ ![degrees_distance_diagram](/doc/img/degrees_distance_diagram.png)
 
 With a viewing angle of 60° we calculate:
 
