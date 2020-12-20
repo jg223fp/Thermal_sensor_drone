@@ -14,7 +14,7 @@
 |Gopro camera mount|1|Owbed(35) 
 |Breadboard jumper wire male to male|10|32 
 |Breadboard jumper wire female to female|4|13 
-|Total||4325 SEK
+|Total||516 SEK
 
 
 </BR>
