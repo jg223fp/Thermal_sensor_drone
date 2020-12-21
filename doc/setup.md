@@ -61,22 +61,11 @@ This is done under the tab "Payload formats". The decoder should be written in j
 ![Payload decoder](/doc/img/TTN5.jpg "Payload decoder")
 </BR>
 
-Here is the code for our payload decoder, it return the two float values that we send but if the payload is shorter than 4 bytes it activates the alarm function meaning a fire has been detected. So instead of sending a string saying "alarm activated", we just send a short payload and then the payload decoder will know what to do. 
+Here is the code for our payload decoder, it return the two float values that we send. 
 ```javascript
 function Decoder(bytes, port) {
   
   var payload = bytes.length;
-  
-  if (payload<4) {  // if the payload is shorter than 4 the alarm will be set off
-   var objects = {};
-   var alarm = 'active'; 
-  
-  objects.alarm = alarm;
-  return objects;
-}
-
-  else {
-  
   var decoded = {};
   var bits = (bytes[0] << 24) | (bytes[1] << 16) | (bytes[2] << 8) | (bytes[3]);
   var sign = ((bits >>> 31) == 0) ? 1.0 : -1.0;
@@ -95,7 +84,7 @@ function Decoder(bytes, port) {
   decoded.voltage  = +f.toFixed(2);
 
   return decoded;
-}}
+}
 
 
 ```
@@ -126,7 +115,7 @@ Explenation of  the fields:
 
 
 ## Setting up IFTTT 
-Now we're gonna create two so called applets on IFTTT. Those will take our values from TTN and send them to Adafruit IO. If we had the IFTTT pro version we would only need one applet to do this job but we're cheap and poor students so we only have a free acount. The free acount has a limit of 3 applets so it´s still ok.
+Now we're gonna create two so called applets on IFTTT. If we had the IFTTT pro version we would only need one applet to do this job but we're cheap and poor students so we only have a free acount. The free acount has a limit of 3 applets so it´s still ok.
 
 First of we need to add what triggers the event
 ![Create IFTTT](/doc/img/IFTTT1.jpg)</BR>
@@ -134,15 +123,6 @@ First of we need to add what triggers the event
 There is a lot of services connected to IFTTT. Here we´re gonna use webhooks as a trigger
 ![Create IFTTT](/doc/img/IFTTT2.jpg)</BR>
 
-Fill in the eventname used in intergation on TTN
-![Create IFTTT](/doc/img/IFTTT3.jpg)</BR>
-
-Now we´re gonna choose what happens when the trigger is set of. Here we gonna use Adafruit IO. Before we do this step we need to go to io.adafruit.com and create two feeds. One for voltage and one for temperature. The feeds will then automaticly be visible on IFTTT when selecting what feed to send data to.
-![Create IFTTT](/doc/img/IFTTT4.jpg)</BR>
-![Create IFTTT](/doc/img/IFTTT5.jpg)</BR>
-
-Now we just need the key for the TTN integration. Navigate to the applet and press it, then press the webhooks logo. We will find the key under documentation in the upper right corner. 
-![Create IFTTT](/doc/img/IFTTT6.jpg)</BR>
 
 
 
