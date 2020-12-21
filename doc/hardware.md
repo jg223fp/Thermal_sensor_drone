@@ -17,6 +17,8 @@
 |Breadboard jumper wire female to female    |4    |13
 |Total||516 SEK
 
+## Hardware circuit diagram
+![Circuit diagram](/doc/img/circuit_diagram.png "Circuit diagram")
 
 ## Cheerson CX-20 drone
 The drone we have used for this project is a Cheerson CX-20. It's quite a big drone but still affordable. We needed a drone with some lift capacity so that we could mount our device underneath. There is no data on how much it can carry but there are videos on Youtube where it flies with weights of 1.5kg. We aimed to make our device lightweight but still resistant to some liquid.
@@ -30,8 +32,6 @@ It also had a GoPro camera mount that we could use to attach the device.
 
 ## Voltage divider
 To measure the battery level we had to scale the voltage from 12V down beneath 3.3V, which is the maximum tolerance for input on the LoPy pins. We solved this issue with a voltage divider. It's a simple circuit containing two resistors with calculated values.
-
-![Circuit diagram](/doc/img/circuit_diagram.png "Circuit diagram")
 
 ##### VREF calculation:
 
