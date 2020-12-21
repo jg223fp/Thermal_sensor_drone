@@ -8,10 +8,10 @@
 #### Date of submission: 21xx-xx-xx
 
 ## Abstract
-The project aimed to develop a simple, yet effective, IoT-device that could help monitor heat generation in wide areas (e.g a disposal processing plants) and notify personel and/or ultimately the fire brigade.
+The project aimed to develop a simple, yet effective, IoT-device that could help monitor heat generation in wide areas (e.g a disposal processing plant) and notify personel and/or ultimately the fire brigade.
 
 ## Background
-The idea came from a relative who works as an engineer at a municipality eneregy department. 
+The idea came from a relative who works as an engineer at a municipality energy department.
 
 He described how the vast property of a disposal processing plant or a recycling facility can be hard to monitor. A fire can be devastating so if heat generation can be detected in an early stage, the risk of injuries and damage on environment can be minimized.
 
@@ -28,8 +28,6 @@ Develop an airbourne product that periodically measures surface temperature to d
 [Test](/doc/test.md)
 
 [Timelog](/doc/timelog.md)
-
-![Circuit diagram](/doc/img/circuit_diagram.png "Circuit diagram")
 
 ## Results
 Lorem
