@@ -57,3 +57,4 @@
 |Update circuit diagram and moved calculations to hardware.md.   |20-12-20   |0,5h   |PO   |
 |Distance/degrees diagram. Added image and text to hardware.md.   |20-12-20   |1h   |PO   |
 |Updated overall text hardware.md.   |20-12-20   |1h   |PO   |
+|Edited setup.md and fixed logging via IFTTT to spreadsheet|20-12-21|2h|JG & PO
