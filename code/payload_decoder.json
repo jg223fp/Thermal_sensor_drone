@@ -1,17 +1,6 @@
 function Decoder(bytes, port) {
   
   var payload = bytes.length;
-  
-  if (payload<4) {                   // if the payload is shorter than 4 the alarm will be set off
-   var objects = {};
-   var alarm = 'active'; 
-  
-  objects.alarm = alarm;
-  return objects;
-}
-
-  else {
-  
   var decoded = {};
   var bits = (bytes[0] << 24) | (bytes[1] << 16) | (bytes[2] << 8) | (bytes[3]);
   var sign = ((bits >>> 31) == 0) ? 1.0 : -1.0;
@@ -30,4 +19,4 @@ function Decoder(bytes, port) {
   decoded.voltage  = +f.toFixed(2);
 
   return decoded;
-}}
+}
