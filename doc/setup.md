@@ -1,6 +1,6 @@
 # Setup
 ## Why we choosed LoRa
-We have chosen to use LoRa connection for the data sent by the drone. We know that this may not be the best solution for the project beacuse of LoRas limitations in bandwidht. TTN has a fair access policy of 30 seconds per day for uplinks, and 10 messages per day for downlinks. A more suitable solution for our scenario would proberly be a strong WiFi covering the 
+We have chosen to use LoRa connection for the data sent by the drone. We know that this may not be the best solution for the project beacuse of LoRas limitations in bandwidht. TTN has a fair access policy of 30 seconds per day for uplinks, and 10 messages per day for downlinks. A more suitable solution for our scenario would proberly be a strong WiFi covering the
 waste facility. But this project is also about learning and LoRa is a new and exciting technique. Thats why we still choose to go with it. It also has the advantages of long range, low cost and low power consuption.
 
 ## What we gonna do
@@ -63,10 +63,10 @@ This is done under the tab "Payload formats". The decoder should be written in j
 <img src="/doc/img/TTN5.jpg" width="850">
 </BR>
 
-Here is the code for our payload decoder, it return the two float values that we send. 
+Here is the code for our payload decoder, it return the two float values that we send.
 ```javascript
 function Decoder(bytes, port) {
-  
+
   var payload = bytes.length;
   var decoded = {};
   var bits = (bytes[0] << 24) | (bytes[1] << 16) | (bytes[2] << 8) | (bytes[3]);
@@ -98,11 +98,11 @@ Now the data tab will show our recieved and decoded payloads
 </BR>
 
 
-The last thing we want to do on TTN is to add integrations for IFTTT and ubidots.
+The last thing we want to do on TTN is to add integrations for IFTTT and Ubidots.
 We will use IFTTT to log our transmitted data in a google spreadsheet and Ubidots for showing a dashboard and activating the alarm.
 We do this by going to the tab integrations. There are a few to choose from.
 ### IFTTT
-Explenation of  the fields:
+Explanation of the fields:
 * Create a Process ID: this can be anything you want, it’s a unique identifier for the IFTTT process
 * Create an Event ID: this is what our event within IFTTT will be called, make something up!
 * Key: we will get this from IFTTT after creating the IFTTT app
@@ -118,7 +118,7 @@ Explenation of  the fields:
 <img src="/doc/img/TTN8.jpg" width="850">
 
 
-## Setting up IFTTT 
+## Setting up IFTTT
 Now we're gonna create two so called applets on IFTTT. If we had the IFTTT pro version we would only need one applet to do this job but we're cheap and poor students so we only have a free acount. The free acount has a limit of 3 applets so it´s still ok.
 
 First of we need to add what triggers the event
@@ -130,13 +130,9 @@ There is a lot of services connected to IFTTT. Here we´re gonna use webhooks as
 <img src="/doc/img/IFTTT2.jpg" width="48">
 
 
+## Data visualization
 
+Since we already connected TTN to IFTTT it was fairly easy to create a new app that sent the data to Adafruit and be visualized in a dashboard. However, during tests we discovered that the delay of shown values was sometimes over 10 sec. We took a decision to see if we could decrease the delay by connection a service directly to TTN instead of of via IFTTT. TTN natively support connection to Ubidots and after some research we tested how big delay we got using the Ubidots dashboard instead. This decreased the delay to about 5 seconds which made us decided that it should be our dashboard of choice. Below is images from the dashboard ini normal stage and when an alarm occurs.
 
-
-
-
-
-
-
-
-
+<img src="/doc/img/ubidots_no_alarm.png" width="850">
+<img src="/doc/img/ubidots_alarm.png" width="850">
