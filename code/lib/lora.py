@@ -44,11 +44,6 @@ def connect_lora(app_eui,app_key):
     except Exception as e:
        print("Couldn't connect to LoRa.",e)
 
-def alarm():
-            alarm = 1     #must be a payload shorter than length 4 to set of the alarm on TTN. Notice: dont send text!
-            s.send(bytes(alarm))        #encode payload and send
-            print("Sending alarm messege!")
-
 def send_values(temp,vbat):
     payload = struct.pack(">ff", temp,vbat)     #encode payload
     s.send(payload)     #send payload
