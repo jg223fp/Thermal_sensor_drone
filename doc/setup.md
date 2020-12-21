@@ -13,11 +13,11 @@ Here is a short explenation of how to set up The Things Network(TTN) when sendin
 First of we will need an acount on www.thethingsnetwork.org.
 The second thing we want to do is to create an application. The application is our own small program that will receive the packages that we send.
 
-<img src="/doc/img/TTN1.jpg" width="700">
+<img src="/doc/img/TTN1.jpg" width="1000">
 </BR>
 
 When we´re done creating the app we can navigate to it. On the tab "overview" we will see something called Application EUIS. This is the apps adress. we will need it for our LoRa code to know where to send the packages on TTN. We also need the app key for this. But tog get that we first need to register our device to the application.
-<img src="/doc/img/TTN2.jpg" width="700">
+<img src="/doc/img/TTN2.jpg" width="1000">
 </BR>
 
 For this we will need our devices unique id, so called devEUI. Get it by running the following code:
@@ -31,13 +31,13 @@ print("DevEUI: %s" % (ubinascii.hexlify(lora.mac()).decode('ascii')))
 
 Now we can register the device to the application.
 
-<img src="/doc/img/TTN3.jpg" width="700">
+<img src="/doc/img/TTN3.jpg" width="1000">
 </BR>
 
 When registration is completed, navigate to the registred device to retrieve the app key
 
 
-<img src="/doc/img/TTN4.jpg" width="700">
+<img src="/doc/img/TTN4.jpg" width="1000">
 </BR>
 
 
@@ -59,8 +59,8 @@ payload = struct.pack(">ff", value1,value2) #encode payload
 </BR>
 Now we only need to unpack the data when its received in our application on TTN.
 This is done under the tab "Payload formats". The decoder should be written in javascript. As we jet dont know how to write this we googled and found a prewritten decoder that we modified to suit our needs.
-
-<img src="/doc/img/TTN5.jpg" width="700">
+</BR>
+<img src="/doc/img/TTN5.jpg" width="1000">
 </BR>
 
 Here is the code for our payload decoder, it return the two float values that we send. 
@@ -93,7 +93,8 @@ function Decoder(bytes, port) {
 
 
 Now the data tab will show our recieved and decoded payloads
-<img src="/doc/img/TTN6.jpg" width="700">
+
+<img src="/doc/img/TTN6.jpg" width="1000">
 </BR>
 
 
@@ -107,14 +108,14 @@ Explenation of  the fields:
 * Key: we will get this from IFTTT after creating the IFTTT app
 * Values: Here we type the name of our payload values that we will send. We can send up to three.
 
-<img src="/doc/img/TTN7.jpg" width="700">
+<img src="/doc/img/TTN7.jpg" width="1000">
 
 ### Ubidots
 Explenation of  the fields:
 * Access Key: Select default key
 * Token: This is your personal token found on ubidots
 
-<img src="/doc/img/TTN8.jpg" width="700">
+<img src="/doc/img/TTN8.jpg" width="1000">
 
 
 ## Setting up IFTTT 
