@@ -30,6 +30,7 @@ print("DevEUI: %s" % (ubinascii.hexlify(lora.mac()).decode('ascii')))
 ```
 
 Now we can register the device to the application.
+
 ![Register device](/doc/img/TTN3.jpg "Register device")
 </BR>
 
