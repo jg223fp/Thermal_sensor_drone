@@ -58,6 +58,7 @@ payload = struct.pack(">ff", value1,value2) #encode payload
 </BR>
 Now we only need to unpack the data when its received in our application on TTN.
 This is done under the tab "Payload formats". The decoder should be written in javascript. As we jet dont know how to write this we googled and found a prewritten decoder that we modified to suit our needs.
+
 ![Payload decoder](/doc/img/TTN5.jpg "Payload decoder")
 </BR>
 
@@ -95,23 +96,24 @@ Now the data tab will show our recieved and decoded payloads
 </BR>
 
 
-The last thing we want to do on TTN is to add an integration for IFTTT.
+The last thing we want to do on TTN is to add integrations for IFTTT and ubidots.
+We will use IFTTT to log our transmitted data in a google spreadsheet and Ubidots for showing a dashboard and activating the alarm.
 We do this by going to the tab integrations. There are a few to choose from.
-We choosed to use IFTTT.
-
+### IFTTT
 Explenation of  the fields:
 * Create a Process ID: this can be anything you want, it’s a unique identifier for the IFTTT process
 * Create an Event ID: this is what our event within IFTTT will be called, make something up!
 * Key: we will get this from IFTTT after creating the IFTTT app
 * Values: Here we type the name of our payload values that we will send. We can send up to three.
 
-
 ![integration](/doc/img/TTN7.jpg "integration")
 
+### Ubidots
+Explenation of  the fields:
+* Access Key: Select default key
+* Token: This is your personal token found on ubidots
 
-
-
-
+![integration](/doc/img/TTN8.jpg "integration")
 
 
 ## Setting up IFTTT 
