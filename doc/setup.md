@@ -126,6 +126,8 @@ First of we need to add what triggers the event
 There is a lot of services connected to IFTTT. Here we´re gonna use webhooks as a trigger
 ![Create IFTTT](/doc/img/IFTTT2.jpg)</BR>
 
+<img src="/doc/img/IFTTT2.jpg" width="48">
+
 
 
 
