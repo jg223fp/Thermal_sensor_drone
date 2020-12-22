@@ -149,10 +149,14 @@ Most systems need to have a log so users can see the history of generated data. 
 <img src="/doc/img/IFTTT_log_app1.png" width="300">
 <img src="/doc/img/IFTTT_log_app2.png" width="300">
 
+
 These will forward "value1" and "value2" together with timestamp to spreadsheets in Google Drive.
 
-<img src="/doc/img/google_logging.png" width="400">
+
+<img src="/doc/img/google_logging.png" width="500">
+
 
 When 2000 events has been added new sheets are created. A full spreadsheet will have a minimal size of 23kb.
+
 
 <img src="/doc/img/temp_log.JPG" width="500">
