@@ -4,7 +4,7 @@ We have chosen to use LoRa connection for the data sent by the drone. We know th
 waste facility. But this project is also about learning and LoRa is a new and exciting technique. Thats why we still choose to go with it. It also has the advantages of long range, low cost and low power consuption.
 
 ## What we gonna do
-Just a short and basic descreption of what we're aiming to do here.
+Just a short and basic description of what we're aiming to do here.
 Our target is to upload values to TTN via LorA. On TTN we will decode the values. After that we will use IFTTT and webhooks to send them further to feeds on adafruit io. If the firealarm is set of we will use......(something)
 
 
@@ -131,8 +131,14 @@ There is a lot of services connected to IFTTT. Here we´re gonna use webhooks as
 
 
 ## Data visualization
-
 Since we already connected TTN to IFTTT it was fairly easy to create a new app that sent the data to Adafruit and be visualized in a dashboard. However, during tests we discovered that the delay of shown values was sometimes over 10 sec. We took a decision to see if we could decrease the delay by connection a service directly to TTN instead of of via IFTTT. TTN natively support connection to Ubidots and after some research we tested how big delay we got using the Ubidots dashboard instead. This decreased the delay to about 5 seconds which made us decided that it should be our dashboard of choice. Below is images from the dashboard in normal status and when an alarm occurs.
 
 <img src="/doc/img/ubidots_no_alarm.png" width="850">
 <img src="/doc/img/ubidots_alarm.png" width="850">
+
+## Alarm notifications
+We've looked into different solutions to notify supervisors if an alarm occur. With IFTTT there were several service available for notifications and SMS like Notifications (IFTTT app), Pushover and "SMS". Since SMS has a fee and most notification services is relatively unknown and demand a user account we've chosen to use Slack. It's a well established platform were it's easy to add new supervisors to a workspace when needed.
+To integrate with Slack we use Ubidots events to forward alarms if the trigger level is reached. The alarms will appear in a workspace we've created for the purpose which is configurated to notify the users at all time.
+
+<img src="/doc/img/slack_alarm.png" width="500">
+<img src="/doc/img/slack_push.jpeg" width="500">
