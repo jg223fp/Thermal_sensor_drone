@@ -140,7 +140,5 @@ Since we already connected TTN to IFTTT it was fairly easy to create a new app t
 We've looked into different solutions to notify supervisors if an alarm occur. With IFTTT there were several service available for notifications and SMS like Notifications (IFTTT app), Pushover and "SMS". Since SMS has a fee and most notification services is relatively unknown and demand a user account we've chosen to use Slack. It's a well established platform were it's easy to add new supervisors to a workspace when needed.
 To integrate with Slack we use Ubidots events to forward alarms if the trigger level is reached. The alarms will appear in a workspace we've created for the purpose which is configurated to notify the users at all time.
 
-<img src="/doc/img/slack_alarm.png" width="700">
-</BR>
-</BR>
+<img src="/doc/img/slack_alarm.png" width="800">
 <img src="/doc/img/slack_push.jpeg" width="300">
