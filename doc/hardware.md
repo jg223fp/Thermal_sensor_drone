@@ -35,7 +35,7 @@ To measure the battery level we had to scale the voltage from 12V down beneath 3
 
 ##### VREF calculation:
 
-VREF = 12 * (10000 / 47000 + 10000) = 2.198 V
+VREF = 12.53 * (10000 / 47000 + 10000) = 2.198 V
 
 ##### VBAT calculation:
 PIN_voltage = PIN18 input / 1000
@@ -55,12 +55,13 @@ Power consumption is 4.5mA.
 ![thermal sensor](/doc/img/thermal1.jpg "thermal sensor")
 ![thermal sensor](/doc/img/thermal2.jpg "thermal sensor")
 
-### Configuration and coverage
+## Alarm configuration
 
 Measured temperature will decrease with distance. The diagram below shows the result from a test that was performed with a set heat generation of 160°C. With the support of this data our belief is that the sensor should be able to detect a heat generation of 150°C from a distance of 4 meters by setting the alarm threshold at 40°C. Since paper self-ignites at about 185°C (https://www.dafo.se/Arkiv/Faktabank/Brandrisker-och-riskhantering/Brandteori/Varme/) this configuration should give an eligible function. It will also prevent false alarms when the drone is flying very near the surface since temperatures in Sweden rarely rises above 40°C.
 
 ![degrees_distance_diagram](/doc/img/degrees_distance_diagram.png)
 
+## Sensor area coverage
 With a viewing angle of 60° we calculate:
 
 x = 4 * tan(30°) = 2,3 m
