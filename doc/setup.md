@@ -141,5 +141,5 @@ We've looked into different solutions to notify supervisors if an alarm occur. W
 To integrate with Slack we use Ubidots events to forward alarms if the trigger level is reached. The alarms will appear in a workspace we've created for the purpose which is configurated to notify the users at all time.
 
 <img src="/doc/img/slack_alarm.png" width="700">
-</BR>
+</BR></BR>
 <img src="/doc/img/slack_push.jpeg" width="300">
