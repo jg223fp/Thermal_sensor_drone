@@ -59,3 +59,4 @@
 |Updated overall text hardware.md.   |20-12-20   |1h   |PO   |
 |Edited setup.md and fixed logging via IFTTT to spreadsheet|20-12-21|2h|JG & PO
 |Added text and images for notifications and logging to setup.md.   |20-12-22   |1,5h   |PO   |
+|Update test requirements and test.md. Update test results.   |20-12-24   |2h   |PO   |
