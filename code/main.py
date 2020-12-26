@@ -65,7 +65,7 @@ def check_temperature():
             alarm_temp = highest_temp
             alarm_active = True
             _thread.start_new_thread(alarm_sound, ())    #starts alarmsound in a new thread
-            _thread.start_new_thread(alarm_timer, ([3]))    # starts a timer in a new thread witch will turn of alarm after x seconds.
+            _thread.start_new_thread(alarm_timer, ([20]))    # starts a timer in a new thread witch will turn of alarm after x seconds.
 
 def alarm_timer(alarm_time):
     global alarm_active
