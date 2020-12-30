@@ -17,12 +17,11 @@ lora = LoRa(mode=LoRa.LORAWAN, region=LoRa.EU868)
 def connect_lora(app_eui,app_key):
     global lora_connected
     global s
-    
     try:
         lora.join(activation=LoRa.OTAA, auth=(app_eui, app_key), timeout=0)   # join a network using OTAA (Over the Air Activation)
-        print("Trying to connect to LoRa...")
         while not lora.has_joined():
-            pass
+            print("Trying to connect to LoRa...")
+            time.sleep(3)
 
         print("\nConnected to LoRa\n")
         lora_connected = True

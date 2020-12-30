@@ -48,6 +48,22 @@ def alarm_sound():
         time.sleep(0.07)
     ch.duty_cycle(0)
 
+def lora_connected_sound():
+    tim = PWM(0, frequency=100)
+    ch.duty_cycle(0.9)
+    time.sleep(0.1)
+    ch.duty_cycle(0)
+    time.sleep(0.1)
+    tim = PWM(0, frequency=5000)
+    ch.duty_cycle(0.9)
+    time.sleep(0.1)
+    ch.duty_cycle(0)
+    time.sleep(0.1)
+    tim = PWM(0, frequency=50000)
+    ch.duty_cycle(0.9)
+    time.sleep(0.1)
+    ch.duty_cycle(0)    
+
 def read_temperature():
     i2c = machine.I2C(1)
     sensor = AMG88XX(i2c)
@@ -81,23 +97,6 @@ def alarm_timer(alarm_time):
         if time.time() - start > alarm_time:
             alarm_active = False
 
-def lora_connected_sound():
-    tim = PWM(0, frequency=100)
-    ch.duty_cycle(0.9)
-    time.sleep(0.1)
-    ch.duty_cycle(0)
-    time.sleep(0.1)
-    tim = PWM(0, frequency=5000)
-    ch.duty_cycle(0.9)
-    time.sleep(0.1)
-    ch.duty_cycle(0)
-    time.sleep(0.1)
-    tim = PWM(0, frequency=50000)
-    ch.duty_cycle(0.9)
-    time.sleep(0.1)
-    ch.duty_cycle(0)
-
-
 def main_program():
     while True:
         try:
@@ -123,5 +122,6 @@ def main_program():
 
 #program starts
 pycom.rgbled(yellow)
+print("Starting program")
 _thread.start_new_thread(check_temperature, ())      #start temperature sensoring in a thread
 _thread.start_new_thread(main_program, ())      #start the main program in a thread
