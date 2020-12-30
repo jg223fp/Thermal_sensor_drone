@@ -74,11 +74,30 @@ def alarm_timer(alarm_time):
         if time.time() - start > alarm_time:
             alarm_active = False
 
+def lora_connected_sound():
+    tim = PWM(0, frequency=100)
+    ch.duty_cycle(0.9)
+    time.sleep(0.1)
+    ch.duty_cycle(0)
+    time.sleep(0.1)
+    tim = PWM(0, frequency=5000)
+    ch.duty_cycle(0.9)
+    time.sleep(0.1)
+    ch.duty_cycle(0)
+    time.sleep(0.1)
+    tim = PWM(0, frequency=50000)
+    ch.duty_cycle(0.9)
+    time.sleep(0.1)
+    ch.duty_cycle(0)
+
+
 def main_program():
     while True:
         try:
             if not lora.lora_connected:        #if lora is´nt connected, connect it.
                 lora.connect_lora(app_eui,app_key)
+                lora_connected_sound()
+
 
             elif alarm_active:
                 print("Alarm!")

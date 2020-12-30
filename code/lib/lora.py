@@ -10,7 +10,7 @@ lora_connected = False
 
 #RGB onboardled colors
 pycom.heartbeat(False)
-green = 0x00FF00
+green = 0x000500
 yellow = 0x090500
 red = 0x050000
 
@@ -28,8 +28,8 @@ def connect_lora(app_eui,app_key):
     try:
         lora.join(activation=LoRa.OTAA, auth=(app_eui, app_key), timeout=0)   # join a network using OTAA (Over the Air Activation)
         while not lora.has_joined():
-
-            print("Trying to connect to LoRa...")
+            pass
+            #print("Trying to connect to LoRa...")
 
         #    count += 1
         #    time.sleep(3)
