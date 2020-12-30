@@ -64,3 +64,4 @@
 |Filming drone in daylight with ubidots dashboard|20-12-25|1,5h|JG
 |Editing presentation video.   |20-12-28   |2h   |PO   |
 |Editing presentation video.   |20-12-30   |1,5h   |PO   |
+|Editing lora code and adding connecion confirmation by sound|20-12-30|3h|JG|
