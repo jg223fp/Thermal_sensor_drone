@@ -62,7 +62,7 @@ def lora_connected_sound():
     tim = PWM(0, frequency=50000)
     ch.duty_cycle(0.9)
     time.sleep(0.1)
-    ch.duty_cycle(0)    
+    ch.duty_cycle(0)
 
 def read_temperature():
     i2c = machine.I2C(1)
@@ -102,8 +102,9 @@ def main_program():
         try:
             if not lora.lora_connected:        #if lora is´nt connected, connect it.
                 lora.connect_lora(app_eui,app_key)
-                pycom.rgbled(green)
-                lora_connected_sound()
+                if lora.lora_connected:        #if lib crash: dont play sound  
+                    pycom.rgbled(green)
+                    lora_connected_sound()
 
             elif alarm_active:
                 print("Alarm!")
