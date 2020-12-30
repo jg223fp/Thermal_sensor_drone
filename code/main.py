@@ -61,7 +61,7 @@ def check_temperature():
     while True:
         highest_temp = read_temperature()
         sensor_temp = highest_temp      # updates sensor_temp with new value, highest_temp cant be the value we send beacuse it is reset every cycle
-        if highest_temp > 25 and not alarm_active :       #activate alarm if temperature is to high
+        if highest_temp > 30 and not alarm_active :       #activate alarm if temperature is to high
             alarm_temp = highest_temp
             alarm_active = True
             _thread.start_new_thread(alarm_sound, ())    #starts alarmsound in a new thread
@@ -75,23 +75,18 @@ def alarm_timer(alarm_time):
             alarm_active = False
 
 def main_program():
-    #global lora.lora_connected
     while True:
         try:
-            if not lora.lora_connected or not lora.lora.has_joined():       #if lora is´nt connected, connect it.
+            if not lora.lora_connected:        #if lora is´nt connected, connect it.
                 lora.connect_lora(app_eui,app_key)
 
             elif alarm_active:
                 print("Alarm!")
-                lora.send_values(alarm_temp,vbat)      #send 2 floats
+                lora.send_values(alarm_temp,vbat)      #send 2 floats: alarm temperature and voltage
 
             else:
                 vbat = voltage_measure.vbat_measure(voltage_pin.voltage())       #get new battery voltage value
                 lora.send_values(sensor_temp,vbat)      #send 2 floats: sensor temperature and battery voltage
-
-            start = time.time()
-            while time.time() - start < 3:      #slow the program for 3 seconds so LoRa dosen´t crash
-                pass
 
         except OSError as er:
             print("Connectivity issue: " + str(er))
