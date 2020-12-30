@@ -12,6 +12,13 @@ import _thread
 from machine import Pin
 from machine import PWM
 
+
+#RGB onboardled colors
+pycom.heartbeat(False)
+green = 0x000500
+yellow = 0x090500
+red = 0x050000
+
 #pins
 adc = machine.ADC(bits=12)             # create an ADC object
 voltage_pin = adc.channel(pin='P18', attn=adc.ATTN_11DB)        # create an analog pin on P18. 11DB to span over 2.198V.
@@ -96,8 +103,8 @@ def main_program():
         try:
             if not lora.lora_connected:        #if lora is´nt connected, connect it.
                 lora.connect_lora(app_eui,app_key)
+                pycom.rgbled(green)
                 lora_connected_sound()
-
 
             elif alarm_active:
                 print("Alarm!")
@@ -115,5 +122,6 @@ def main_program():
             lora.lora_connected = False
 
 #program starts
+pycom.rgbled(yellow)
 _thread.start_new_thread(check_temperature, ())      #start temperature sensoring in a thread
 _thread.start_new_thread(main_program, ())      #start the main program in a thread
