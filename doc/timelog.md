@@ -68,3 +68,6 @@
 |Editing presentation video.   |21-01-02   |2h   |PO   |
 |Editing presentation video.   |21-01-03   |2h   |PO   |
 |Editing presentation video.   |21-01-04   |2,5h   |PO   |
+|Weekly meeting and planning|21-01-04|30 min| JG & PO
+|Writing bootfile|20-01-04|3h|JG
+|Editing setup|20-01-04|1h|JG

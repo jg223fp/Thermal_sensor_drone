@@ -102,6 +102,9 @@ The last thing we want to do on TTN is to add integrations for IFTTT and Ubidots
 We will use IFTTT to log our transmitted data in a google spreadsheet and Ubidots for showing a dashboard and activating the alarm.
 We do this by going to the tab integrations. There are a few to choose from.
 ### IFTTT
+IFTTT is a free to use automation service. It works by a basic concept, that if this happends, then do that.
+There is a lot of services connected to IFTTT witch you can combine so the possibilities is endless.
+We first used IFTTT to pass on our values to adafruit but this turned out to be a slow choise and we there for used it for datalogging instead.
 Explanation of the fields:
 * Create a Process ID: this can be anything you want, it’s a unique identifier for the IFTTT process
 * Create an Event ID: this is what our event within IFTTT will be called, make something up!
@@ -117,10 +120,6 @@ Explenation of  the fields:
 
 <img src="/doc/img/TTN8.jpg" width="850">
 
-### IFTTT
-IFTTT is a free to use automation service. It works by a basic concept, that if this happends, then do that.
-There is a lot of services connected to IFTTT witch you can combine so the possibilities is endless.
-We first used IFTTT to pass on our values to adafruit but this turned out to be a slow choise and we there for used it for datalogging instead.
 
 ## Data visualization
 Since we already connected TTN to IFTTT it was fairly easy to create a new app that sent the data to Adafruit and be visualized in a dashboard. However, during tests we discovered that the delay of shown values was sometimes over 10 sec. We took a decision to see if we could decrease the delay by connection a service directly to TTN instead of of via IFTTT. TTN natively support connection to Ubidots and after some research we tested how big delay we got using the Ubidots dashboard instead. This decreased the delay to about 5 seconds which made us decided that it should be our dashboard of choice. Below is images from the dashboard in normal status and when an alarm occurs.
