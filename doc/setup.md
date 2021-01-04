@@ -122,12 +122,12 @@ Explenation of  the fields:
 Now we're gonna create two so called applets on IFTTT. If we had the IFTTT pro version we would only need one applet to do this job but we're cheap and poor students so we only have a free acount. The free acount has a limit of 3 applets so it´s still ok.
 
 First of we need to add what triggers the event
-![Create IFTTT](/doc/img/IFTTT1.jpg)</BR>
+<img src="/doc/img/IFTTT1.jpg" width="850">
 
 There is a lot of services connected to IFTTT. Here we´re gonna use webhooks as a trigger
-![Create IFTTT](/doc/img/IFTTT2.jpg)</BR>
+<img src="/doc/img/IFTTT2.jpg" width="850">
 
-<img src="/doc/img/IFTTT2.jpg" width="48">
+
 
 
 ## Data visualization
