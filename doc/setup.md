@@ -117,18 +117,10 @@ Explenation of  the fields:
 
 <img src="/doc/img/TTN8.jpg" width="850">
 
-
-## Setting up IFTTT
-Now we're gonna create two so called applets on IFTTT. If we had the IFTTT pro version we would only need one applet to do this job but we're cheap and poor students so we only have a free acount. The free acount has a limit of 3 applets so it´s still ok.
-
-First of we need to add what triggers the event
-<img src="/doc/img/IFTTT1.jpg" width="850">
-
-There is a lot of services connected to IFTTT. Here we´re gonna use webhooks as a trigger
-<img src="/doc/img/IFTTT2.jpg" width="850">
-
-
-
+### IFTTT
+IFTTT is a free to use automation service. It works by a basic concept, that if this happends, then do that.
+There is a lot of services connected to IFTTT witch you can combine so the possibilities is endless.
+We first used IFTTT to pass on our values to adafruit but this turned out to be a slow choise and we there for used it for datalogging instead.
 
 ## Data visualization
 Since we already connected TTN to IFTTT it was fairly easy to create a new app that sent the data to Adafruit and be visualized in a dashboard. However, during tests we discovered that the delay of shown values was sometimes over 10 sec. We took a decision to see if we could decrease the delay by connection a service directly to TTN instead of of via IFTTT. TTN natively support connection to Ubidots and after some research we tested how big delay we got using the Ubidots dashboard instead. This decreased the delay to about 5 seconds which made us decided that it should be our dashboard of choice. Below is images from the dashboard in normal status and when an alarm occurs.
@@ -145,6 +137,7 @@ To integrate with Slack we use Ubidots events to forward alarms if the trigger l
 
 ## System logging
 Most systems need to have a log so users can see the history of generated data. In our setup we reused the webhooks we already set up from TTN to IFTTT and created two new applets.
+ 
 
 <img src="/doc/img/IFTTT_log_app1.png" width="300">
 <img src="/doc/img/IFTTT_log_app2.png" width="300">
