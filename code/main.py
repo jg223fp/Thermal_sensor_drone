@@ -100,6 +100,7 @@ def alarm_timer(alarm_time):
             alarm_active = False
 
 def main_program():
+    print("\nStarting program...\n")
     while True:
         try:
             if not lora.lora_connected:        #if lora isn't connected, connect it.
@@ -125,6 +126,5 @@ def main_program():
 
 #program starts
 pycom.rgbled(yellow)
-print("Starting program")
 _thread.start_new_thread(check_temperature, ())      #start temperature sensoring in a thread
 _thread.start_new_thread(main_program, ())      #start the main program in a thread
