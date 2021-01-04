@@ -67,3 +67,4 @@
 |Editing lora code and adding connecion confirmation by sound|20-12-30|3h|JG|
 |Editing presentation video.   |21-01-02   |2h   |PO   |
 |Editing presentation video.   |21-01-03   |2h   |PO   |
+|Editing presentation video.   |21-01-04   |2,5h   |PO   |
