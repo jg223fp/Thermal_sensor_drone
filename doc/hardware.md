@@ -57,7 +57,7 @@ Power consumption is 4.5mA.
 
 ## Alarm configuration
 
-Measured temperature will decrease with distance. The diagram below shows the result from a test that was performed with a set heat generation of 160°C. With the support of this data our belief is that the sensor should be able to detect a heat generation of 150°C from a distance of 4 meters by setting the alarm threshold at 40°C. Since paper self-ignites at about 185°C (https://www.dafo.se/Arkiv/Faktabank/Brandrisker-och-riskhantering/Brandteori/Varme/) this configuration should give an eligible function. It will also prevent false alarms when the drone is flying very near the surface since temperatures in Sweden rarely rises above 40°C.
+Measured temperature will decrease with distance. The diagram below shows the result from a test that was performed with a set heat generation of 160°C. With the support of this data our belief is that the sensor should be able to detect a heat generation of 150°C from a distance of 4 meters by setting the alarm threshold at 40°C. Since paper self-ignites at about 185°C (https://www.dafo.se/Arkiv/Faktabank/Brandrisker-och-riskhantering/Brandteori/Varme/) this configuration should give an eligible function. It will also prevent false alarms when the drone is flying very near the surface since temperatures in Sweden rarely rises above 40°C. To support supervisors with plausible data we therefore calculate an estimated value to compensate for loss in distance.  
 
 ![degrees_distance_diagram](/doc/img/degrees_distance_diagram.png)
 
