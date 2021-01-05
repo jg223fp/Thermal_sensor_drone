@@ -19,15 +19,6 @@ green = 0x000500
 yellow = 0x090500
 red = 0x050000
 
-#pins
-adc = machine.ADC(bits=12)             # create an ADC object
-voltage_pin = adc.channel(pin='P18', attn=adc.ATTN_11DB)        # create an analog pin on P18. 11DB to span over 2.198V.
-adc.vref(2198)
-
-#set up pin PWM timer for output to alarm buzzer
-tim = PWM(0, frequency=0)
-ch = tim.channel(2, pin="P19", duty_cycle=0)
-
 #LoRa
 # create an OTAA authentication parameters, change them to the provided credentials
 app_eui = ubinascii.unhexlify('70B3D57ED00390DD')

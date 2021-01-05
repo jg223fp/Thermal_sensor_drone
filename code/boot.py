@@ -7,8 +7,6 @@ from amg88xx import AMG88XX
 from machine import PWM
 import voltage_measure
 
-
-
 #pins
 adc = machine.ADC(bits=12)             # create an ADC object
 voltage_pin = adc.channel(pin='P18', attn=adc.ATTN_11DB)        # create an analog pin on P18. 11DB to span over 2.198V.
@@ -75,9 +73,9 @@ try:
     #battery level test
     print("Reading battery voltage...")
     vbat = voltage_measure.vbat_measure(voltage_pin.voltage())       #get new battery voltage value
-    if vbat < 11:
+    print("Battery voltage: ",vbat," V")
+    if vbat < 3:                    # 11 for  battery  3 for USB
         raise ValueError
-
 
     #buzzer test
     print("Testing buzzer...")
