@@ -3,8 +3,10 @@
 ## The code
 
 
-<img src="/doc/img/FLOW1.jpg" width="577">
+<img src="/doc/img/FLOW1.jpg" width="600">
 </BR>
+
+
 time lora: 3s
 time temperature: 250 ms
 
