@@ -32,11 +32,12 @@ def read_temperature():
 
 try:
     print("Initiating Thermalsensor drone startup selftest\n")
+
     #thermalsensor AMG8833 selftest
     print("Testing thermalsensor AMG8833...")
     test_value = read_temperature()
     print("Returned value: ",test_value," C")
-    if test_value < 0 or test_value > 100:     # value must be in sensorlimits
+    if test_value < 0 or test_value > 130:     # value must be in sensorlimits
         raise Exception
     print("Test completed!")
     time.sleep(1)
@@ -47,6 +48,8 @@ try:
     print("Battery voltage: ",vbat," V")
     if vbat < 3:                    # 11 for  battery  3 for USB
         raise ValueError
+    print("Test completed!")
+    time.sleep(1)
 
     #buzzer test
     print("Testing buzzer...")
