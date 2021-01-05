@@ -97,6 +97,8 @@ def main_program():
     print("\nStarting program...\n")
     while True:
         try:
+            vbat = voltage_measure.vbat_measure(voltage_pin.voltage())       #get new battery voltage value
+
             if not lora.lora_connected:        #if lora isn't connected, connect it.
                 lora.connect_lora(app_eui,app_key)
                 if lora.lora_connected:        #if lib crash: dont play sound
@@ -108,7 +110,6 @@ def main_program():
                 lora.send_values(alarm_temp,vbat)      #send 2 floats: alarm temperature and voltage
 
             else:
-                vbat = voltage_measure.vbat_measure(voltage_pin.voltage())       #get new battery voltage value
                 lora.send_values(sensor_temp,vbat)      #send 2 floats: sensor temperature and battery voltage
 
         except OSError as er:
