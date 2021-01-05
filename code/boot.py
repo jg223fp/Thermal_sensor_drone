@@ -5,6 +5,14 @@ import time
 import sys
 from amg88xx import AMG88XX
 from machine import PWM
+import voltage_measure
+
+
+
+#pins
+adc = machine.ADC(bits=12)             # create an ADC object
+voltage_pin = adc.channel(pin='P18', attn=adc.ATTN_11DB)        # create an analog pin on P18. 11DB to span over 2.198V.
+adc.vref(2198)
 
 #set up pin PWM timer for output to alarm buzzer
 tim = PWM(0, frequency=0)
@@ -64,6 +72,13 @@ try:
     print("Test completed!")
     time.sleep(1)
 
+    #battery level test
+    print("Reading battery voltage...")
+    vbat = voltage_measure.vbat_measure(voltage_pin.voltage())       #get new battery voltage value
+    if vbat < 11:
+        raise ValueError
+
+
     #buzzer test
     print("Testing buzzer...")
     buzzer_test()
@@ -73,6 +88,11 @@ try:
     time.sleep(1)
     boot_complete_sound()
     print("All tests completed!")
+
+except ValueError:
+        print("The battery level is to low! Remove battery and recharge!")
+        while True:
+            error_sound()
 
 except Exception:
         print("Sensor error! The sensor have returned none or an out of range value. Remove battery and check hardware!")
