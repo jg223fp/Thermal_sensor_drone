@@ -101,9 +101,8 @@ def main_program():
 
             if not lora.lora_connected:        #if lora isn't connected, connect it.
                 lora.connect_lora(app_eui,app_key)
-                if lora.lora_connected:        #if lib crash: dont play sound
-                    pycom.rgbled(green)
-                    lora_connected_sound()
+                pycom.rgbled(green)
+                lora_connected_sound()
 
             elif alarm_active:
                 print("Alarm!")
