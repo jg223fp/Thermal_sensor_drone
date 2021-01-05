@@ -2,7 +2,6 @@
 import machine
 import utime
 import time
-import sys
 from amg88xx import AMG88XX
 from machine import PWM
 import voltage_measure
@@ -15,7 +14,7 @@ adc.vref(2198)
 
 #set up pin PWM timer for output to alarm buzzer
 tim = PWM(0, frequency=0)
-ch = tim.channel(2, pin="P19", duty_cycle=0)
+sounds.ch = tim.channel(2, pin="P19", duty_cycle=0)
 
 #functions
 def read_temperature():
@@ -52,20 +51,20 @@ try:
     #buzzer test
     print("Testing buzzer...")
     print("Playing tones... If silent: remove battery and check hardware")
-    buzzer_test()
+    sounds.buzzer_test()
     time.sleep(1)
     print("Test completed!\n")
 
     time.sleep(1)
-    boot_complete_sound()
+    sounds.boot_complete()
     print("All tests completed!")
 
 except ValueError:
         print("The battery level is to low! Remove battery and recharge!")
         while True:
-            error_sound()
+            sounds.error()
 
 except Exception:
         print("Sensor error! The sensor have returned none or an out of range value. Remove battery and check hardware!")
         while True:
-            error_sound()
+            sounds.error()

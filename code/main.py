@@ -55,7 +55,7 @@ def check_temperature():
         if highest_temp >= 150:       #activate alarm if temperature is to high
             alarm_temp = highest_temp
             alarm_active = True
-            alarm_sound(20)
+            sounds.alarm(20)
             alarm_active = False
 
 def main_program():
@@ -67,7 +67,7 @@ def main_program():
             if not lora.lora_connected:        #if lora isn't connected, connect it.
                 lora.connect_lora(app_eui,app_key)
                 pycom.rgbled(green)
-                lora_connected_sound()
+                sounds.lora_connected()
 
             elif alarm_active:
                 print("Alarm!")
