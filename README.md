@@ -31,6 +31,3 @@ Develop an airbourne product that periodically measures surface temperature to d
 
 ## Results
 Presentation movie on Youtube: [Link](https://youtu.be/pyZejh2D0b8)
-
-## Conclusions
-Ipsum
