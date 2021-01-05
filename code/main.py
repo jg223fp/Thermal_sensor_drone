@@ -39,8 +39,9 @@ alarm_temp = 0
 alarm_active = False
 
 #functions
-def alarm_sound():
-    while alarm_active:
+def alarm_sound(duration):
+    alarm_start = time.time()
+    while time.time() - alarm_start < duration:
         tim = PWM(0, frequency=500)
         ch.duty_cycle(0.9)
         time.sleep(0.07)
@@ -86,17 +87,10 @@ def check_temperature():
         if highest_temp >= 40:
             highest_temp = round(highest_temp * 3.75)      #compensation for temperature loss by distance
         sensor_temp = highest_temp      # updates sensor_temp with new value, highest_temp cant be the value we send beacuse it is reset every cycle
-        if highest_temp >= 150 and not alarm_active :       #activate alarm if temperature is to high
+        if highest_temp >= 150:       #activate alarm if temperature is to high
             alarm_temp = highest_temp
             alarm_active = True
-            _thread.start_new_thread(alarm_sound, ())    #starts alarmsound in a new thread
-            _thread.start_new_thread(alarm_timer, ([20]))    # starts a timer in a new thread witch will turn of alarm after x seconds.
-
-def alarm_timer(alarm_time):
-    global alarm_active
-    start = time.time()
-    while alarm_active:
-        if time.time() - start > alarm_time:
+            alarm_sound(20)
             alarm_active = False
 
 def main_program():
