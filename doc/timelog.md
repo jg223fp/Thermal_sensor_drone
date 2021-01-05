@@ -72,3 +72,4 @@
 |Writing bootfile.  |20-01-04 |3h |JG
 |Editing setup. |20-01-04 |1h |JG
 |Editing presentation video. Uppload to Youtube. Update hardware.md and images.   |21-01-04   |1,5h   |PO   |
+|Drawing flowchart, editing and cleaning code, moved all sounds|21-01-05|3h|JG
