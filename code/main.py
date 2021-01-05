@@ -11,7 +11,7 @@ import utime
 import _thread
 from machine import Pin
 from machine import PWM
-
+import sounds
 
 #RGB onboardled colors
 pycom.heartbeat(False)
@@ -30,32 +30,6 @@ alarm_temp = 0
 alarm_active = False
 
 #functions
-def alarm_sound(duration):
-    alarm_start = time.time()
-    while time.time() - alarm_start < duration:
-        tim = PWM(0, frequency=500)
-        ch.duty_cycle(0.9)
-        time.sleep(0.07)
-        ch.duty_cycle(0)
-        time.sleep(0.07)
-    ch.duty_cycle(0)
-
-def lora_connected_sound():
-    tim = PWM(0, frequency=100)
-    ch.duty_cycle(0.9)
-    time.sleep(0.1)
-    ch.duty_cycle(0)
-    time.sleep(0.1)
-    tim = PWM(0, frequency=5000)
-    ch.duty_cycle(0.9)
-    time.sleep(0.1)
-    ch.duty_cycle(0)
-    time.sleep(0.1)
-    tim = PWM(0, frequency=50000)
-    ch.duty_cycle(0.9)
-    time.sleep(0.1)
-    ch.duty_cycle(0)
-
 def read_temperature():
     i2c = machine.I2C(1)
     sensor = AMG88XX(i2c)

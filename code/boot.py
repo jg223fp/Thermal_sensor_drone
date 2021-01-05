@@ -6,6 +6,7 @@ import sys
 from amg88xx import AMG88XX
 from machine import PWM
 import voltage_measure
+import sounds
 
 #pins
 adc = machine.ADC(bits=12)             # create an ADC object
@@ -30,35 +31,6 @@ def read_temperature():
                      highest_temp = sensor[row, col]
         return highest_temp
 
-def error_sound():
-    tim = PWM(0, frequency=100)
-    ch.duty_cycle(0.5)
-    time.sleep(0.5)
-    ch.duty_cycle(0)
-    time.sleep(0.5)
-
-def boot_complete_sound():
-        tim = PWM(0, frequency=10000)
-        ch.duty_cycle(0.7)
-        time.sleep(0.1)
-        ch.duty_cycle(0)
-        time.sleep(0.1)
-        tim = PWM(0, frequency=10000)
-        ch.duty_cycle(0.7)
-        time.sleep(0.1)
-        ch.duty_cycle(0)
-        time.sleep(0.1)
-
-def buzzer_test():
-    hertz = [100,300,1000,2000,3000,4000,10000]
-    print("Playing tones... If silent: remove battery and check hardware")
-    for hz in hertz:
-        tim = PWM(0, frequency=hz)
-        ch.duty_cycle(0.7)
-        time.sleep(0.1)
-        ch.duty_cycle(0)
-        time.sleep(0.1)
-
 try:
     print("Initiating Thermalsensor drone startup selftest\n")
     #thermalsensor AMG8833 selftest
@@ -79,6 +51,7 @@ try:
 
     #buzzer test
     print("Testing buzzer...")
+    print("Playing tones... If silent: remove battery and check hardware")
     buzzer_test()
     time.sleep(1)
     print("Test completed!\n")
