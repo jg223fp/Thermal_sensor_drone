@@ -30,7 +30,7 @@ Develop an airbourne product that periodically measures surface temperature to d
 [Timelog](/doc/timelog.md)
 
 ## Results
-Presentation movie on Youtube: [Länk](https://youtu.be/pyZejh2D0b8)
+Presentation movie on Youtube: [Link](https://youtu.be/pyZejh2D0b8)
 
 ## Conclusions
 Ipsum
