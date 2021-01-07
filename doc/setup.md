@@ -19,8 +19,8 @@ This flowchart will give a brief explenation.</BR>
 ### Main file
 
 To make the main file work fast we used a module named thread_. This module allows us to run things paralelly in different threads. 
-If we would have run everything in the same loop, LoRa would slow everything down and we would miss meny temperatures. In a reallife event this could have had devastating consequences. We tried to make things even faster by shrinking the sending time for LoRa but without any luck. The standard time is 3 seconds. Even a small adjustment down to 2.5 seconds resulted in a unreliable and unstable program. 
-The LorA thread has a loop time of 3 seconds and the temperature detection loops with a time of 250 ms.
+If we would have ran everything in the same loop, LoRa would have slowed everything down and we would miss meny temperatures. In a reallife event this could have had devastating consequences. We tried to make things even faster by shrinking the sending time for LoRa but without any luck. The standard time is 3 seconds. Even a small adjustment down to 2.5 seconds resulted in a unreliable and unstable program. 
+The LorA thread has a loop time of 3 seconds and the temperature detection thread loops with a time of 250 ms.
 We dont send every detected value. When the LoRa thread has finished sending a value it will grab the most recent detected temperature and the battery voltage and send. If the temperature thread detects a temperature wich is over the limit an alarm will be triggered. When this happens the program starts sounding the buzzer and keeps sending the triggering temperature over and over for a given time (20 s) to make sure it is noticed.
 This flowchart gives a basic explanation of the two threads.
 
@@ -48,12 +48,25 @@ def read_temperature():
 ### Libraries
 
 #### lora
+To keep our main file cleaner we put all the code for LoRa in a seperate file. We simplified the usage by making one function for connecting and one function for sending.
+Our sending function is adapted to our project as it encodes two float values with the struct module.
+```python
+def send_values(temp,vbat):
+    payload = struct.pack(">ff", temp,vbat)     #encode payload
+    s.send(payload)     #send payload
+    print("Sending payload...")
+```
 
 #### amg88xx
+This library is for the thermal sensor AMG8833.
+The first library we found for this sensor was written in circuit python and we thought that maby with some guiding and help we could edit it into micropython. But after a whole lot of more searching this library was found. It was written by Dean Miller, Scott Shawcroft for Adafruit Industries under MIT license.
 
 #### voltage_measure
+This is a library for the voltage measuring function.
 
 #### sounds
+This library contains all the different buzzer sounds. At first we had them in both the main and the boot file but we realized that it just made the code blurry.
+
 
 
 ## Why we choosed LoRa
