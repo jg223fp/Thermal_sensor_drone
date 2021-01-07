@@ -4,7 +4,7 @@
 
 ### Boot file
 We choosed to setup our pins in the boot file since its something that will only be carried out ones.
-The bootfile will also carry out some selftests to varify that the hardware is working properly.
+The bootfile will also perform some selftests to verify that the hardware is working properly.
 This flowchart will give a brief explenation.</BR>
 
 <img src="/img/flow2.jpg" width="500">
@@ -19,12 +19,31 @@ This flowchart will give a brief explenation.</BR>
 ### Main file
 
 To make the main file work fast we used a module named thread_. This module allows us to run things paralelly in different threads. 
-If we would have run everything in the same loop, LoRa would slow everything down and we would most certain miss meny temperatures.
-LoRa has an built in sending window of 3 seconds. We tried to get pass this in order to get even faster updates but without any luck. It ran when we set it to 2.5 seconds but crashed after a while. The LorA thread has a loop time of 3 seconds and the temperature detection loops with a time of 250 ms.
+If we would have run everything in the same loop, LoRa would slow everything down and we would miss meny temperatures. In a reallife event this could have had devastating consequences. We tried to make things even faster by shrinking the sending time for LoRa but without any luck. The standard time is 3 seconds. Even a small adjustment down to 2.5 seconds resulted in a unreliable and unstable program. 
+The LorA thread has a loop time of 3 seconds and the temperature detection loops with a time of 250 ms.
+We dont send every detected value. When the LoRa thread has finished sending a value it will grab the most recent detected temperature and the battery voltage and send. If the temperature thread detects a temperature wich is over the limit an alarm will be triggered. When this happens the program starts sounding the buzzer and keeps sending the triggering temperature over and over for a given time (20 s) to make sure it is noticed.
 This flowchart gives a basic explanation of the two threads.
 
 <img src="/img/FLOW1.jpg" width="650">
 </BR>
+
+The temperature sensor detects 64 temperatures at the same time. We are only interested in the highest detected so we use this function to select that one.
+```python
+def read_temperature():
+    i2c = machine.I2C(1)
+    sensor = AMG88XX(i2c)
+    while True:
+        highest_temp = 0
+        utime.sleep(0.2)
+        sensor.refresh()
+        for row in range(8):
+            for col in range(8):
+                if sensor[row, col] > highest_temp:  
+                     highest_temp = sensor[row, col]
+        return highest_temp
+```
+
+
 
 ### Libraries
 
