@@ -48,8 +48,7 @@ VBAT = PIN_voltage / (10000 / 47000 + 10000)
 
 
 ## Adafruit AMG8833 IR Thermal camera
-The sensor was used to monitor the temperatures is a AMG8833. It has 64 pixels (8x8) that detects individual temperatures by IR with a framerate of up to 10Hz. The temperatures is returned in arrays via I2C communication. According to the technical documentation it can detect temperatures in a range from 0 to 80°C, however, we discovered temperatures up to 157°C. The viewing angle is 60° and detection distance is up to 7 meters.
-
+The sensor was used to monitor the temperatures is a AMG8833. It has 64 pixels (8x8) that detects individual temperatures by IR with a frame rate of up to 10Hz. The temperatures is returned in arrays via I2C communication. According to the technical documentation it can detect temperatures in a range from 0 to 80°C, however, we discovered temperatures up to 157°C. The viewing angle is 60° and detection distance is up to 7 meters.
 Power consumption is 4.5mA.
 
 ![thermal sensor](/img/thermal1.jpg "thermal sensor")
