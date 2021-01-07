@@ -10,14 +10,7 @@ This flowchart will give a brief explenation.</BR>
 <img src="/img/flow2.jpg" width="500">
 </BR>
 
-```python
-
-```
-
-
-
 ### Main file
-
 To make the main file work fast we used a module named thread_. This module allows us to run things paralelly in different threads. 
 If we would have ran everything in the same loop, LoRa would have slowed everything down and we would miss meny temperatures. In a reallife event this could have had devastating consequences. We tried to make things even faster by shrinking the sending time for LoRa but without any luck. The standard time is 3 seconds. Even a small adjustment down to 2.5 seconds resulted in a unreliable and unstable program. 
 The LorA thread has a loop time of 3 seconds and the temperature detection thread loops with a time of 250 ms.
@@ -27,7 +20,7 @@ This flowchart gives a basic explanation of the two threads.
 <img src="/img/FLOW1.jpg" width="650">
 </BR>
 
-The temperature sensor detects 64 temperatures at the same time. We are only interested in the highest detected so we use this function to select that one.
+The temperature sensor detects 64 temperatures at the same time. This function goes through all of the 64 values, selecting the highest one detected as that is the one witch we are intereseted in.
 ```python
 def read_temperature():
     i2c = machine.I2C(1)
@@ -62,10 +55,10 @@ This library is for the thermal sensor AMG8833.
 The first library we found for this sensor was written in circuit python and we thought that maby with some guiding and help we could edit it into micropython. But after a whole lot of more searching this library was found. It was written by Dean Miller, Scott Shawcroft for Adafruit Industries under MIT license.
 
 #### voltage_measure
-This is a library for the voltage measuring function.
+This is a library which contains a function for calculating the measured battery voltage.
 
 #### sounds
-This library contains all the different buzzer sounds. At first we had them in both the main and the boot file but we realized that it just made the code blurry.
+A library containing all the different buzzer sounds. At first both the main and the boot file contained the sounds they needed. When cleaning the code we realized how blurry it made the code and moved them to a seperate file.
 
 
 
@@ -73,9 +66,9 @@ This library contains all the different buzzer sounds. At first we had them in b
 We have chosen to use LoRa connection for the data sent by the drone. We know that this may not be the best solution for the project because of LoRas limitations in bandwidth. TTN has a fair access policy of 30 seconds per day for up links, and 10 messages per day for down links. A more suitable solution for our scenario would properly be a strong Wi-Fi covering the
 waste facility. But this project is also about learning and LoRa is a new and exciting technique. That's why we still choose to go with it. It also has the advantages of long range, low cost and low power consumption.
 
-## What we gonna do
+## Our goal
 Just a short and basic description of what we're aiming to do here.
-Our target is to upload values to TTN via LorA. On TTN we will decode the values. The values will be sent to Ubidots and to IFTTT. Ubidots will be used as a dashboard for shpowing the values and to send pushnotifications if the alarm is activated. IFTTT will forward the data to log it in spreadsheets in Google Drive
+Our target is to upload values to TTN via LorA. On TTN we will decode the values. The values will be sent to Ubidots and to IFTTT. Ubidots will be used as a dashboard for showing the values and to send pushnotifications if the alarm is activated. IFTTT will forward the data to log it in spreadsheets in Google Drive
 
 
 ## Setting up TTN

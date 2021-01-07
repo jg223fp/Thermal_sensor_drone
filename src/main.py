@@ -49,7 +49,7 @@ def check_temperature():
     global alarm_temp
     while True:
         highest_temp = read_temperature()
-        if highest_temp >= 40:
+        if highest_temp >= 40:               # summers in sweden dont get over 40
             highest_temp = round(highest_temp * 3.75)      #compensation for temperature loss by distance
         sensor_temp = highest_temp      # updates sensor_temp with new value, highest_temp cant be the value we send beacuse it is reset every cycle
         if highest_temp >= 150:       #activate alarm if temperature is to high

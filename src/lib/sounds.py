@@ -1,7 +1,7 @@
 from machine import PWM
 import time
 
-#set up pin PWM timer for output to alarm buzzer in boot file
+# set up pin PWM timer for output to alarm buzzer in boot file
 # with this line: sounds.ch = tim.channel(2, pin="P##", duty_cycle=0)
 
 def alarm(duration):
