@@ -4,7 +4,7 @@
 
 
 <img src="/doc/img/flow2.jpg" width="500">
-<img src="/doc/img/FLOW1.jpg" width="700">
+<img src="/doc/img/FLOW1.jpg" width="650">
 </BR>
 
 
