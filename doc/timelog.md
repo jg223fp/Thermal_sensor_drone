@@ -20,7 +20,6 @@
 |Added content to README.|20-12-02|1h|PO
 |Changed calculation voltage measure. Update circuit diagram.|20-12-03|1h|PO
 |Morning meeting|20-12-03|1h|JG & PO
-|Dreaming about voltage meassure|20-12-03|15 min|PO
 |Git merging and code updates|20-12-03|4h|JG & PO
 |Project discussion with supervisor|20-12-03|15 min|JG & PO
 |Tried moving project to new repository|20-12-04|3,5h|JG
@@ -73,3 +72,6 @@
 |Editing setup. |20-01-04 |1h |JG
 |Editing presentation video. Uppload to Youtube. Update hardware.md and images.   |21-01-04   |1,5h   |PO   |
 |Drawing flowchart, editing and cleaning code, moved all sounds|21-01-05|3h|JG
+|Project update with supervisor. Team meeting and final planning. Change folder structure on Git and update paths.   |21-01-07   |1h   |PO & JG   |
+|Wrote Results and added images to README.    |21-01-07   |1h   |PO   |
+|Spelling check. Added code to setup.   |21-01-07   |   |JG   |
