@@ -74,4 +74,4 @@
 |Drawing flowchart, editing and cleaning code, moved all sounds|21-01-05|3h|JG
 |Project update with supervisor. Team meeting and final planning. Change folder structure on Git and update paths.   |21-01-07   |1h   |PO & JG   |
 |Wrote Results and added images to README.    |21-01-07   |1h   |PO   |
-|Spelling check. Added code to setup.   |21-01-07   |   |JG   |
+|Spelling check. Added code to setup.   |21-01-07   | 4h  |JG   |

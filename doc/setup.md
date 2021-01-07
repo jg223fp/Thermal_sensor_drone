@@ -41,7 +41,7 @@ def read_temperature():
 ### Libraries
 
 #### lora
-To keep our main file cleaner we put all the code for LoRa in a seperate file except the app_eui and the app_key as those will be provided from the main file when making the conncetion. We simplified the usage by making one function for connecting and one function for sending.
+To keep our main file clean we put all the code for LoRa in a seperate file except the app_eui and the app_key as those will be provided from the main file when making the conncetion. We simplified the usage by making one function for connecting and one function for sending.
 Our sending function is adapted to our project as it encodes two float values with the struct module.
 ```python
 def send_values(temp,vbat):
@@ -52,10 +52,10 @@ def send_values(temp,vbat):
 
 #### amg88xx
 This library is for the thermal sensor AMG8833.
-The first library we found for this sensor was written in circuit python and we thought that maby with some guiding and help we could edit it into micropython. But with some luck we stumbled across this library. It was written by Dean Miller, Scott Shawcroft for Adafruit Industries under MIT license.
+The first library we found for this sensor was written in circuit python and we thought that maby with some guiding and help we could edit it into micropython. But with some luck we stumbled across this library written in micropython. It was written by Dean Miller, Scott Shawcroft for Adafruit Industries under MIT license.
 
 #### voltage_measure
-This is a library which contains a function for calculating the measured battery voltage.
+This is a library which contains a function for calculating the measured battery voltage. The measuring is done by an ADC converter.
 
 #### sounds
 A library containing all the different buzzer sounds. At first both the main and the boot file contained the sounds they needed. When cleaning the code we realized how blurry it made the code and moved them to a seperate file.
