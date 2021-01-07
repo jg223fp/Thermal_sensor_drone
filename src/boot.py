@@ -58,6 +58,7 @@ try:
     time.sleep(1)
     print("Test completed!")
 
+    #selftest complete
     time.sleep(1)
     sounds.boot_complete()
     print("\nAll tests completed!")
