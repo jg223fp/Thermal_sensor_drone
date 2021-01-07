@@ -3,8 +3,8 @@
 ## The code
 
 
-<img src="/doc/img/flow2.jpg" width="500">
-<img src="/doc/img/FLOW1.jpg" width="650">
+<img src="/img/flow2.jpg" width="500">
+<img src="/img/FLOW1.jpg" width="650">
 </BR>
 
 
@@ -30,11 +30,11 @@ Here is a short explenation of how to set up The Things Network(TTN) when sendin
 First of we will need an acount on www.thethingsnetwork.org.
 The second thing we want to do is to create an application. The application is our own small program that will receive the packages that we send.
 
-<img src="/doc/img/TTN1.jpg" width="850">
+<img src="/img/TTN1.jpg" width="850">
 </BR>
 
 When we´re done creating the app we can navigate to it. On the tab "overview" we will see something called Application EUIS. This is the apps adress. we will need it for our LoRa code to know where to send the packages on TTN. We also need the app key for this. But tog get that we first need to register our device to the application.
-<img src="/doc/img/TTN2.jpg" width="850">
+<img src="/img/TTN2.jpg" width="850">
 </BR>
 
 For this we will need our devices unique id, so called devEUI. Get it by running the following code:
@@ -48,13 +48,13 @@ print("DevEUI: %s" % (ubinascii.hexlify(lora.mac()).decode('ascii')))
 
 Now we can register the device to the application.
 
-<img src="/doc/img/TTN3.jpg" width="850">
+<img src="/img/TTN3.jpg" width="850">
 </BR>
 
 When registration is completed, navigate to the registred device to retrieve the app key
 
 
-<img src="/doc/img/TTN4.jpg" width="850">
+<img src="/img/TTN4.jpg" width="850">
 </BR>
 
 
@@ -77,7 +77,7 @@ payload = struct.pack(">ff", value1,value2) #encode payload
 Now we only need to unpack the data when its received in our application on TTN.
 This is done under the tab "Payload formats". The decoder should be written in javascript. As we jet dont know how to write this we googled and found a prewritten decoder that we modified to suit our needs.
 </BR>
-<img src="/doc/img/TTN5.jpg" width="850">
+<img src="/img/TTN5.jpg" width="850">
 </BR>
 
 Here is the code for our payload decoder, it return the two float values that we send.
@@ -111,7 +111,7 @@ function Decoder(bytes, port) {
 
 Now the data tab will show our recieved and decoded payloads
 
-<img src="/doc/img/TTN6.jpg" width="850">
+<img src="/img/TTN6.jpg" width="850">
 </BR>
 
 
@@ -128,44 +128,44 @@ Explanation of the fields:
 * Key: we will get this from IFTTT after creating the IFTTT app
 * Values: Here we type the name of our payload values that we will send. We can send up to three.
 
-<img src="/doc/img/TTN7.jpg" width="850">
+<img src="/img/TTN7.jpg" width="850">
 
 ### Ubidots
 Explenation of  the fields:
 * Access Key: Select default key
 * Token: This is your personal token found on ubidots
 
-<img src="/doc/img/TTN8.jpg" width="850">
+<img src="/img/TTN8.jpg" width="850">
 
 
 ## Data visualization
 Since we already connected TTN to IFTTT it was fairly easy to create a new app that sent the data to Adafruit and be visualized in a dashboard. However, during tests we discovered that the delay of shown values was sometimes over 10 sec. We took a decision to see if we could decrease the delay by connection a service directly to TTN instead of of via IFTTT. TTN natively support connection to Ubidots and after some research we tested how big delay we got using the Ubidots dashboard instead. This decreased the delay to about 5 seconds which made us decided that it should be our dashboard of choice. Below is images from the dashboard in normal status and when an alarm occurs.
 
-<img src="/doc/img/ubidots_no_alarm.png" width="850">
-<img src="/doc/img/ubidots_alarm.png" width="850">
+<img src="/img/ubidots_no_alarm.png" width="850">
+<img src="/img/ubidots_alarm.png" width="850">
 
 ## Alarm notifications
 We've looked into different solutions to notify supervisors if an alarm occur. With IFTTT there were several service available for notifications and SMS like Notifications (IFTTT app), Pushover and "SMS". Since SMS has a fee and most notification services is relatively unknown and demand a user account we've chosen to use Slack. It's a well established platform were it's easy to add new supervisors to a workspace when needed.
 To integrate with Slack we use Ubidots events to forward alarms if the trigger level is reached. The alarms will appear in a workspace we've created for the purpose which is configurated to notify the users at all time.
 
-<img src="/doc/img/slack_alarm.png" width="700">
-<img src="/doc/img/slack_push.jpeg" width="300">
+<img src="/img/slack_alarm.png" width="700">
+<img src="/img/slack_push.jpeg" width="300">
 
 ## System logging
 Most systems need to have a log so users can see the history of generated data. In our setup we reused the webhooks we already set up from TTN to IFTTT and created two new applets.
  
 
-<img src="/doc/img/IFTTT_log_app1.png" width="300">
-<img src="/doc/img/IFTTT_log_app2.png" width="300">
+<img src="/img/IFTTT_log_app1.png" width="300">
+<img src="/img/IFTTT_log_app2.png" width="300">
 
 
 These will forward "value1" and "value2" together with timestamp to spreadsheets in Google Drive.
 
 
-<img src="/doc/img/google_logging.png" width="500">
+<img src="/img/google_logging.png" width="500">
 
 
 When 2000 events has been added new sheets are created. A full spreadsheet will have a minimal size of 23kb.
 
 
-<img src="/doc/img/temp_log.JPG" width="500">
+<img src="/img/temp_log.JPG" width="500">
