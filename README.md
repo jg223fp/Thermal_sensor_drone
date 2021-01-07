@@ -1,4 +1,4 @@
-![Fire and drone](/doc/img/project_plan_front.jpg "fire_drone")
+![Fire and drone](/img/project_plan_front.jpg "fire_drone")
 
 # Thermal sensor drone
 

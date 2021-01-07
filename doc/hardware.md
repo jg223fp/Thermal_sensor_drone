@@ -18,15 +18,15 @@
 |Total||516 SEK
 
 ## Hardware circuit diagram
-![Circuit diagram](/doc/img/circuit_diagram.png "Circuit diagram")
+![Circuit diagram](/img/circuit_diagram.png "Circuit diagram")
 
 ## Cheerson CX-20 drone
 The drone we have used for this project is a Cheerson CX-20. It's quite a big drone but still affordable. We needed a drone with some lift capacity so that we could mount our device underneath. There is no data on how much it can carry but there are videos on Youtube where it flies with weights of 1.5kg. We aimed to make our device lightweight but still resistant to some liquid.
 The drone also suited us perfectly because of the pin connections underneath. It has both regulated 5V and also 12V straight from the battery. We used these to power our device and also to monitor the drones battery level.
 It also had a GoPro camera mount that we could use to attach the device.
 
-![Drone](/doc/img/drone.jpg "Drone")
-![Pins](/doc/img/pins.jpg "Drone pins")
+![Drone](/img/drone.jpg "Drone")
+![Pins](/img/pins.jpg "Drone pins")
 
 
 
@@ -42,9 +42,9 @@ PIN_voltage = PIN18 input / 1000
 
 VBAT = PIN_voltage / (10000 / 47000 + 10000)
 
-![Voltage divider](/doc/img/vd1.jpg "Voltage divider")
-![Voltage divider](/doc/img/vd2.jpg "Voltage divider")
-![Voltage divider](/doc/img/vd3.jpg "Voltage divider")
+![Voltage divider](/img/vd1.jpg "Voltage divider")
+![Voltage divider](/img/vd2.jpg "Voltage divider")
+![Voltage divider](/img/vd3.jpg "Voltage divider")
 
 
 ## Adafruit AMG8833 IR Thermal camera
@@ -52,14 +52,14 @@ The sensor was used to monitor the temperatures is a AMG8833. It has 64 pixels (
 
 Power consumption is 4.5mA.
 
-![thermal sensor](/doc/img/thermal1.jpg "thermal sensor")
-![thermal sensor](/doc/img/thermal2.jpg "thermal sensor")
+![thermal sensor](/img/thermal1.jpg "thermal sensor")
+![thermal sensor](/img/thermal2.jpg "thermal sensor")
 
 ## Alarm configuration
 
 Measured temperature will decrease with distance. The diagram below shows the result from a test that was performed with a set heat generation of 160°C. With the support of this data our belief is that the sensor should be able to detect a heat generation of 150°C from a distance of 4 meters by setting the alarm threshold at 40°C. Since paper self-ignites at about 185°C (https://www.dafo.se/Arkiv/Faktabank/Brandrisker-och-riskhantering/Brandteori/Varme/) this configuration should give an eligible function. It will also prevent false alarms when the drone is flying very near the surface since temperatures in Sweden rarely rises above 40°C. To support supervisors with plausible data we therefore calculate an estimated value to compensate for loss in distance.  
 
-![degrees_distance_diagram](/doc/img/degrees_distance_diagram.png)
+![degrees_distance_diagram](/img/degrees_distance_diagram.png)
 
 ## Sensor area coverage
 With a viewing angle of 60° we calculate:
@@ -68,7 +68,7 @@ x = 4 * tan(30°) = 2,3 m
 
 A = (2,3 * 2)² = 21,2 m²
 
-![sensor area](/doc/img/sensor_area_calculation.jpg "sensor_area_calculation")
+![sensor area](/img/sensor_area_calculation.jpg "sensor_area_calculation")
 
 
 ## Design and construction
@@ -77,8 +77,8 @@ The sensor and Pycom microcontroller fitted perfect inside. Since the sensor nee
 As mentioned earlier we needed to keep things lightweight in order to make the battery last longer and for the drone to be able to fly with the device attached. The drone was built to fly with a GoPro camera attached. GoPro cameras weighs between 100 and 200g with housing and SD-card depending on the model. Our device ended up with a weight of 186g.  
 
 
-![Components](/doc/img/build1.jpg "Components")
-![Sensor hole](/doc/img/build3.jpg "Sensor hole")
-![Inside](/doc/img/build4.jpg "Inside junction box")
-![Complete](/doc/img/complete1.jpg "The completed device")
-![Attatched](/doc/img/complete2.jpg "Attached to drone")
+![Components](/img/build1.jpg "Components")
+![Sensor hole](/img/build3.jpg "Sensor hole")
+![Inside](/img/build4.jpg "Inside junction box")
+![Complete](/img/complete1.jpg "The completed device")
+![Attatched](/img/complete2.jpg "Attached to drone")
