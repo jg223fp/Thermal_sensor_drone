@@ -2,8 +2,23 @@
 
 ## The code
 
+### Boot file
+We choosed to setup our pins in the boot file since its something that will only be carried out ones.
+The bootfile will also carry out some selftests to varify that the hardware is working properly.
+This flowchart will give a brief explenation.</BR>
 
 <img src="/img/flow2.jpg" width="500">
+</BR>
+
+```python
+
+```
+
+
+
+
+### Main file
+
 <img src="/img/FLOW1.jpg" width="650">
 </BR>
 
@@ -11,9 +26,15 @@
 time lora: 3s
 time temperature: 250 ms
 
+### Libraries
 
+#### lora
 
+#### amg88xx
 
+#### voltage_measure
+
+#### sounds
 
 
 ## Why we choosed LoRa

@@ -46,7 +46,7 @@ try:
     print("Reading battery voltage...")
     vbat = voltage_measure.vbat_measure(voltage_pin.voltage())       #get new battery voltage value
     print("Battery voltage: ",vbat," V")
-    if vbat < 3:                    # 11 for  battery  3 for USB
+    if vbat < 3:                    # 11 V for  battery, 3 V for USB
         raise ValueError
     print("Test completed!")
     time.sleep(1)
@@ -56,11 +56,11 @@ try:
     print("Playing tones... If silent: remove battery and check hardware")
     sounds.buzzer_test()
     time.sleep(1)
-    print("Test completed!\n")
+    print("Test completed!")
 
     time.sleep(1)
     sounds.boot_complete()
-    print("All tests completed!")
+    print("\nAll tests completed!")
 
 except ValueError:
         print("The battery level is to low! Remove battery and recharge!")
