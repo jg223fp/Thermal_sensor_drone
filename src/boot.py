@@ -18,18 +18,22 @@ sounds.ch = tim.channel(2, pin="P19", duty_cycle=0)
 
 #functions
 def read_temperature():
+    '''Read temperatures from sensor on I2C bus and set the highest detected temperature to variable highest_pixel_value.'''
+
     i2c = machine.I2C(1)
     sensor = AMG88XX(i2c)
-    while True:
-        highest_temp = 0
-        utime.sleep(0.2)
-        sensor.refresh()
-        for row in range(8):
-            for col in range(8):
-                if sensor[row, col] > highest_temp:     #select the highest of the sensors 64 detected temperatures
-                     highest_temp = sensor[row, col]
-        return highest_temp
+    try:
+        while True:
+            highest_pixel_temp = 0
+            utime.sleep(0.2)
+            sensor.refresh()    #refresh values from all pixels in sensor.
+            for row in range(8):
+                for col in range(8):
+                    if sensor[row, col] > highest_pixel_temp:     #select the highest of the pixel 64 detected temperatures
+                         highest_pixel_value = sensor[row, col]
+            return highest_pixel_temp
 
+#program starts
 try:
     print("Initiating Thermalsensor drone startup selftest\n")
 
@@ -64,7 +68,7 @@ try:
     print("\nAll tests completed!")
 
 except ValueError:
-        print("The battery level is to low! Remove battery and recharge!")
+        print("The battery level is to low! Please remove battery and recharge.")
         while True:
             sounds.error()
 

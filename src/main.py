@@ -13,52 +13,65 @@ from machine import Pin
 from machine import PWM
 import sounds
 
-#RGB onboardled colors
+#RGB onboard LED colors
 pycom.heartbeat(False)
 green = 0x000500
 yellow = 0x090500
 red = 0x050000
 
 #LoRa
-# create an OTAA authentication parameters, change them to the provided credentials
+#create OTAA authentication parameters, change them to the provided credentials
 app_eui = ubinascii.unhexlify('70B3D57ED00390DD')
 app_key = ubinascii.unhexlify('44FC4474848061790EDB15E3689685AB')
 
-#variables
-sensor_temp = 0
-alarm_temp = 0
+#global variables
+sensor_temp = 0     #The last detected temperature
+alarm_temp = 0      #The temperature which triggered the alarm
 alarm_active = False
 
 #functions
 def read_temperature():
+    '''Read temperatures from sensor on I2C bus and set the highest detected temperature to variable highest_pixel_value.'''
+
     i2c = machine.I2C(1)
     sensor = AMG88XX(i2c)
-    while True:
-        highest_temp = 0
-        utime.sleep(0.2)
-        sensor.refresh()
-        for row in range(8):
-            for col in range(8):
-                if sensor[row, col] > highest_temp:     #select the highest of the sensors 64 detected temperatures
-                     highest_temp = sensor[row, col]
-        return highest_temp
+    try:
+        while True:
+            highest_pixel_temp = 0
+            utime.sleep(0.2)
+            sensor.refresh()    #refresh values from all pixels in sensor.
+            for row in range(8):
+                for col in range(8):
+                    if sensor[row, col] > highest_pixel_temp:     #select the highest of the pixel 64 detected temperatures
+                         highest_pixel_value = sensor[row, col]
+            return highest_pixel_temp
 
-def check_temperature():
+    except Exception as e:
+        print("Temperature read error: " + str(e))
+
+def temperature_alarm_thread():
+    '''Check highest temperature via read_temperature function and activate alarm if threshold is reached.'''
+
     global alarm_active
     global sensor_temp
     global alarm_temp
     while True:
-        highest_temp = read_temperature()
-        if highest_temp >= 40:               # summers in sweden dont get over 40
-            highest_temp = round(highest_temp * 3.75)      #compensation for temperature loss by distance
-        sensor_temp = highest_temp      # updates sensor_temp with new value, highest_temp cant be the value we send beacuse it is reset every cycle
-        if highest_temp >= 150:       #activate alarm if temperature is to high
-            alarm_temp = highest_temp
-            alarm_active = True
-            sounds.alarm(20)
-            alarm_active = False
+        try:
+            highest_temp = read_temperature()       #get new value from sensor
+            highest_temp = round(highest_temp * 3.75)      #compensation for temperature loss by distance. Multiply value calculated from distance/temp diagram. 150/40=3.75.
+            sensor_temp = highest_temp      # updates sensor_temp with new value, highest_temp can't be the value sent beacuse i's resets every cycle
+            if highest_temp >= 150:       #activate alarm if temperature is to high
+                alarm_temp = highest_temp
+                alarm_active = True
+                sounds.alarm(20)        # activates alarm sound on drone.
+                alarm_active = False
 
-def main_program():
+        except Exception as e:
+            print("Temperature alarm error:" + str(e))
+
+def lora_thread():
+    '''Handles connection to LoRa,reads drone voltage battery and sends data values.'''
+
     print("\nStarting program...\n")
     while True:
         try:
@@ -79,11 +92,11 @@ def main_program():
         except OSError as er:
             print("Connectivity issue: " + str(er))
             lora.lora_connected = False
-        except Exception as ex:
-            print("General error: " + str(ex))
+        except Exception as e:
+            print("General error: " + str(e))
             lora.lora_connected = False
 
 #program starts
 pycom.rgbled(yellow)
-_thread.start_new_thread(check_temperature, ())      #start temperature sensoring in a thread
-_thread.start_new_thread(main_program, ())      #start the main program in a thread
+_thread.start_new_thread(temperature_alarm_thread, ())      #start temperature sensoring in a thread
+_thread.start_new_thread(lora_thread, ())      #start the lora program in a thread
