@@ -33,6 +33,9 @@ def read_temperature():
                          highest_pixel_value = sensor[row, col]
             return highest_pixel_temp
 
+    except Exception as e:
+        print("Temperature read error: " + str(e))
+
 #program starts
 try:
     print("Initiating Thermalsensor drone startup selftest\n")

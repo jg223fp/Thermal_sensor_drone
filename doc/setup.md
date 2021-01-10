@@ -3,37 +3,44 @@
 ## The code
 
 ### Boot file
-We choosed to setup our pins in the boot file since its something that will only be carried out ones.
-The bootfile will also perform some selftests to verify that the hardware is working properly.
-This flowchart will give a brief explenation.</BR>
+We choosed to setup our pins in the boot file since it's something that will only be carried out ones.
+The boot-file will also perform some self tests to verify that the hardware is working properly.
+This flowchart will give a brief explanation.</BR>
 
 <img src="/img/flow2.jpg" width="500">
 </BR>
 
 ### Main file
-To make the main file work fast we used a module named thread_. This module allows us to run things paralelly in different threads. 
-If we would have ran everything in the same loop, LoRa would have slowed everything down and we would miss meny temperatures. In a reallife event this could have had devastating consequences. We tried to make things even faster by shrinking the sending time for LoRa but without any luck. The standard time is 3 seconds. Even a small adjustment down to 2.5 seconds resulted in a unreliable and unstable program. 
+To make the main file work fast we used a module named thread_. This module allows us to run functions parallell in different threads.
+If we would've ran all functions in the same loop, LoRa would have slowed everything down and we would miss many temperature readings. In a real life event this could have had great consequences. We tried to make things even faster by shrinking the sending time for LoRa but even a small adjustment down to 2.5 seconds resulted in a unreliable and unstable program. The standard time is 3 seconds.
 The LoRa thread has a loop time of 3 seconds and the temperature detection thread loops with a time of 250 ms.
-We dont send every detected value. When the LoRa thread has finished sending a value it will grab the most recent detected temperature and the battery voltage and send. If the temperature thread detects a temperature wich is over the limit an alarm will be triggered. When this happens the program starts sounding the buzzer and keeps sending the triggering temperature over and over for a given time (20 s) to make sure it is noticed.
+Not every detected value is sent. When the LoRa thread has finished sending a value it will send the most recent detected temperature and the battery voltage.
+If the temperature thread detects a value which is above the threshold an alarm will be triggered. During the alarm time, which is set to 20 s, the regular temperature reading is paused, alarmbuzzer sounds and the triggering temperature is sent over and over to make sure it is noticed.
 This flowchart gives a basic explanation of the two threads.
 
 <img src="/img/FLOW1.jpg" width="650">
 </BR>
 
-The temperature sensor detects 64 temperatures at the same time. This function goes through all of the 64 values, selecting the highest one detected as that is the one witch we are intereseted in.
+The temperature sensor detects 64 temperatures at the same time. This function goes through all of the 64 values, selecting the highest one detected as that is the one witch we are interested in.
 ```python
 def read_temperature():
+    '''Read temperatures from sensor on I2C bus and set the highest detected temperature to variable highest_pixel_value.'''
+
     i2c = machine.I2C(1)
     sensor = AMG88XX(i2c)
-    while True:
-        highest_temp = 0
-        utime.sleep(0.2)
-        sensor.refresh()
-        for row in range(8):
-            for col in range(8):
-                if sensor[row, col] > highest_temp:  
-                     highest_temp = sensor[row, col]
-        return highest_temp
+    try:
+        while True:
+            highest_pixel_temp = 0
+            utime.sleep(0.2)
+            sensor.refresh()    #refresh values from all pixels in sensor.
+            for row in range(8):
+                for col in range(8):
+                    if sensor[row, col] > highest_pixel_temp:     #select the highest of the pixel 64 detected temperatures
+                         highest_pixel_value = sensor[row, col]
+            return highest_pixel_temp
+
+    except Exception as e:
+        print("Temperature read error: " + str(e))
 ```
 
 
@@ -199,7 +206,7 @@ To integrate with Slack we use Ubidots events to forward alarms if the trigger l
 
 ## System logging
 Most systems need to have a log so users can see the history of generated data. In our setup we reused the webhooks we already set up from TTN to IFTTT and created two new applets.
- 
+
 
 <img src="/img/IFTTT_log_app1.png" width="300">
 <img src="/img/IFTTT_log_app2.png" width="300">
