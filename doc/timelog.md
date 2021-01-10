@@ -77,5 +77,4 @@
 |Spelling check. Added code to setup.   |21-01-07   | 4h  |JG   |
 |Finishing   |21-01-10   | 2h  |JG & PO   |
 
-PO  nov: 9.5  dec: 47,67  jan: 10,5
-JG nov: 13,5  dec: 64,67 jan: 15.5
+<img src="/img/timelog_diagram.png" width="500">
