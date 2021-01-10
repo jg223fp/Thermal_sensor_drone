@@ -11,11 +11,11 @@ This flowchart will give a brief explanation.</BR>
 </BR>
 
 ### Main file
-To make the main file work fast we used a module named thread_. This module allows us to run functions parallell in different threads.
-If we would've ran all functions in the same loop, LoRa would have slowed everything down and we would miss many temperature readings. In a real life event this could have had great consequences. We tried to make things even faster by shrinking the sending time for LoRa but even a small adjustment down to 2.5 seconds resulted in a unreliable and unstable program. The standard time is 3 seconds.
+To make the main file work fast we used a module named thread_. This module allows us to run functions parallell in different threads.</BR>
+If we would've ran all functions in the same loop, LoRa would have slowed everything down and we would miss many temperature readings. In a real life event this could have had great consequences. We tried to make things even faster by shrinking the sending time for LoRa but even a small adjustment down to 2.5 seconds resulted in a unreliable and unstable program. The standard time is 3 seconds.</BR>
 The LoRa thread has a loop time of 3 seconds and the temperature detection thread loops with a time of 250 ms.
-Not every detected value is sent. When the LoRa thread has finished sending a value it will send the most recent detected temperature and the battery voltage.
-If the temperature thread detects a value which is above the threshold an alarm will be triggered. During the alarm time, which is set to 20 s, the regular temperature reading is paused, alarmbuzzer sounds and the triggering temperature is sent over and over to make sure it is noticed.
+Not every detected value is sent. When the LoRa thread has finished sending a value it will send the most recent detected temperature and the battery voltage.</BR>
+If the temperature thread detects a value which is above the threshold an alarm will be triggered. During the alarm time, which is set to 20 s, the regular temperature reading is paused, alarmbuzzer sounds and the triggering temperature is sent over and over to make sure it is noticed.</BR>
 This flowchart gives a basic explanation of the two threads.
 
 <img src="/img/FLOW1.jpg" width="650">
