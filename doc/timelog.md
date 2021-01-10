@@ -76,3 +76,5 @@
 |Wrote Results and added images to README.    |21-01-07   |1h   |PO   |
 |Spelling check. Added code to setup.   |21-01-07   | 4h  |JG   |
 
+PO  nov: 9.5  dec: 47,67  jan: 10,5
+JG nov: 13,5  dec: 64,67 jan: 15.5
