@@ -75,6 +75,7 @@
 |Project update with supervisor. Team meeting and final planning. Change folder structure on Git and update paths.   |21-01-07   |1h   |PO & JG   |
 |Wrote Results and added images to README.    |21-01-07   |1h   |PO   |
 |Spelling check. Added code to setup.   |21-01-07   | 4h  |JG   |
+|Finishing   |21-01-10   | 2h  |JG & PO   |
 
 PO  nov: 9.5  dec: 47,67  jan: 10,5
 JG nov: 13,5  dec: 64,67 jan: 15.5
