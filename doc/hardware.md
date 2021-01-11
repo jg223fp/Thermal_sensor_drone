@@ -22,8 +22,8 @@
 
 ## Cheerson CX-20 drone
 The drone we have used for this project is a Cheerson CX-20. It's quite a big drone but still affordable. We needed a drone with some lift capacity so that we could mount our device underneath. There is no data on how much it can carry but there are videos on Youtube where it flies with weights of 1.5kg. We aimed to make our device lightweight but still resistant to some liquid.
-The drone also suited us perfectly because of the pin connections underneath. It has both regulated 5V and also 12V straight from the battery. We used these to power our device and also to monitor the drones battery level.
-It also had a GoPro camera mount that we could use to attach the device.
+The drone has pin connections underneath which suited our project. It has both regulated 5V and also 12V straight from the battery. We used these to power our device and also to monitor the drones battery level.
+It also has a GoPro camera mount that we used to attach the device.
 
 ![Drone](/img/drone.jpg "Drone")
 ![Pins](/img/pins.jpg "Drone pins")
@@ -48,7 +48,7 @@ VBAT = PIN_voltage / (10000 / 47000 + 10000)
 
 
 ## Adafruit AMG8833 IR Thermal camera
-The sensor was used to monitor the temperatures is a AMG8833. It has 64 pixels (8x8) that detects individual temperatures by IR with a frame rate of up to 10Hz. The temperatures is returned in arrays via I2C communication. According to the technical documentation it can detect temperatures in a range from 0 to 80°C, however, we discovered temperatures up to 157°C. The viewing angle is 60° and detection distance is up to 7 meters.
+The sensor used to monitor the temperatures is a AMG8833. It has 64 pixels (8x8) that detects individual temperatures by IR with a frame rate of up to 10Hz. The temperatures is returned in arrays via I2C communication. According to the technical documentation it can detect temperatures in a range from 0 to 80°C, however, we discovered temperatures up to 157°C. The viewing angle is 60° and detection distance is up to 7 meters.
 Power consumption is 4.5mA.
 
 ![thermal sensor](/img/thermal1.jpg "thermal sensor")
@@ -56,7 +56,9 @@ Power consumption is 4.5mA.
 
 ## Alarm configuration
 
-Measured temperature will decrease with distance. The diagram below shows the result from a test that was performed with a set heat generation of 160°C. With the support of this data our belief is that the sensor should be able to detect a heat generation of 150°C from a distance of 4 meters by setting the alarm threshold at 40°C. Since paper self-ignites at about 185°C (https://www.dafo.se/Arkiv/Faktabank/Brandrisker-och-riskhantering/Brandteori/Varme/) this configuration should give an eligible function. It will also prevent false alarms when the drone is flying very near the surface since temperatures in Sweden rarely rises above 40°C. To support supervisors with plausible data we therefore calculate an estimated value to compensate for loss in distance.  
+Measured temperature will decrease with distance. The diagram below shows the result from a test that was performed with a set heat generation of 160°C. With the support of this data our belief is that the sensor should be able to detect a heat generation of 150°C from a distance of 4 meters by setting the alarm threshold at 40°C. Since paper self-ignites at about 185°C (https://www.dafo.se/Arkiv/Faktabank/Brandrisker-och-riskhantering/Brandteori/Varme/) this configuration should give an eligible function. It will also prevent false alarms when the drone is flying very near the surface since temperatures in Sweden rarely rises above 40°C. To support supervisors with plausible data we therefore calculate an estimated value to compensate for loss in distance. The multiply constant we used is 3.75 that we computed with data from diagram beneath.
+
+150/40 = 3.75
 
 ![degrees_distance_diagram](/img/degrees_distance_diagram.png)
 

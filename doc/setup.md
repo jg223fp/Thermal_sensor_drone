@@ -57,15 +57,15 @@ def send_values(temp,vbat):
     print("Sending payload...")
 ```
 
-#### amg88xx
+#### amg88xx.py
 This library is for the thermal sensor AMG8833.
-The first library we found for this sensor was written in circuit python and we thought that maby with some guiding and help we could edit it into micropython. But with some luck we stumbled across this library written in micropython. It was written by Dean Miller, Scott Shawcroft for Adafruit Industries under MIT license.
+The first library we found for this sensor was written in Circuit Python so we planned to edit it into Micropython with some help and guiding from our supervisors. With some further searching we found this library on Github, written in Micropython. It was written by Dean Miller, Scott Shawcroft for Adafruit Industries under MIT license (also referred in code).
 
-#### voltage_measure
+#### voltage_measure.py
 This is a library which contains a function for calculating the measured battery voltage. The measuring is done by an ADC converter.
 
-#### sounds
-A library containing all the different buzzer sounds. At first both the main and the boot file contained the sounds they needed. When cleaning the code we realized how blurry it made the code and moved them to a seperate file.
+#### sounds.py
+A library containing all the different buzzer sounds. At first both the main and the boot file contained the sounds they needed. When cleaning the code we tried to avoid duplicated code and moved them to a seperate library file.
 
 
 
@@ -75,7 +75,7 @@ waste facility. But this project is also about learning and LoRa is a new and ex
 
 ## Our goal
 Just a short and basic description of what we're aiming to do here.
-Our target is to upload values to TTN via LorA. On TTN we will decode the values. The values will be sent to Ubidots and to IFTTT. Ubidots will be used as a dashboard for showing the values and to send pushnotifications if the alarm is activated. IFTTT will forward the data to log it in spreadsheets in Google Drive
+Our target is to upload values to TTN via LorA. On TTN we will decode the values. The values will be sent to Ubidots and to IFTTT. Ubidots will be used as a dashboard for showing the values and to send push notifications if the alarm is activated. IFTTT will forward the data to log it in spreadsheets in Google Drive
 
 
 ## Setting up TTN
@@ -120,7 +120,7 @@ Basically we’re good to go now and can start sending and receiving data from T
 |String|"seven"|5| 73 65 76 65 6e |
 
 </BR>
-We used Pythons built in struct module.
+We used Pythons built-in struct module.
 Data is represented as 2 float values, each of 4 bytes. The ">" arrow sets the byte order to 'big-endian' when packing.
 
 ```python
@@ -157,7 +157,6 @@ function Decoder(bytes, port) {
 
   return decoded;
 }
-
 
 ```
 
@@ -212,13 +211,13 @@ Most systems need to have a log so users can see the history of generated data. 
 <img src="/img/IFTTT_log_app2.png" width="300">
 
 
-These will forward "value1" and "value2" together with timestamp to spreadsheets in Google Drive.
+These will forward "value1" (temperature) and "value2" (battery voltage) together with timestamp to spreadsheets in Google Drive.
 
 
 <img src="/img/google_logging.png" width="500">
 
 
-When 2000 events has been added new sheets are created. A full spreadsheet will have a minimal size of 23kb.
+When 2000 events has been added new sheets are created. A full spreadsheet will have a size of only 23kb.
 
 
 <img src="/img/temp_log.JPG" width="500">

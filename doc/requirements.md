@@ -22,5 +22,3 @@ The project aimed to develop a simple, yet effective, IoT-device that could help
 |11   |Automated detection routing.   |Schedule automated flying route to monitor area periodically.   |3   |Test route at pre-defined time.   |1
 |12  |Weather forecast control.   |Prevent automated routing if weather forecast is rain or snow.|3    |Verify that weather-service sends forecast data to device.   |3, 11
 |13  |Track geoposition.  |Track the units geoposition to track where the abnormal temperature is discovered   |3   |Verify reported postion in external GPS service.   |9
-
-  [36804d87]: www.google.se "Google"

@@ -5,6 +5,7 @@
 #### Members: Johan Gustafsson (jg223fp), Pierre Oskarsson (po222gu)
 #### Program: Computer Science  
 #### Course:  Introducing project (1DT308)
+#### Grade ambition: A/B
 #### Date of submission: 21xx-xx-xx
 
 ## Abstract
@@ -38,7 +39,7 @@ Measured temperature will decrease over distance so compensating for that inaccu
 <img src="/img/complete2.jpg" width="400">
 <img src="/img/build4.jpg" width="400">
 <img src="/img/drone_dashboard.png" width="400">
-<img src="/img/slack_push_.jpeg" width="300">
+<img src="/img/slack_push_.jpeg" width="350">
 
 While we think all the primarily requirements have been fulfilled this project has many development possibilities. We used a drone that was already in our posses so in order to make scheduled and pre-defined flights we would have to have another drone. Our initial plan was also to extract GPS coordinates from the drone but after some research this would require much deeper knowledge about the internal software.
 
