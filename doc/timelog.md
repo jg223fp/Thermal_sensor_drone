@@ -75,6 +75,8 @@
 |Project update with supervisor. Team meeting and final planning. Change folder structure on Git and update paths.   |21-01-07   |1h   |PO & JG   |
 |Wrote Results and added images to README.    |21-01-07   |1h   |PO   |
 |Spelling check. Added code to setup.   |21-01-07   | 4h  |JG   |
-|Finishing   |21-01-10   | 2h  |JG & PO   |
+|Finishing team meeting and review of code. Added comments.  |21-01-10   | 2h  |JG & PO   |
+|Zoom lecture with Fredrik.   |21-01-11   |PO & JG   |1h   |
+|Review all texts and checked spelling.  |21-01-11   |PO   |2h   |
 
-<img src="/img/timelog_diagram.png" width="500">
+<img src="/img/timelog_diagram.png" width="600">
