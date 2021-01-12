@@ -78,5 +78,6 @@
 |Finishing team meeting and review of code. Added comments.  |21-01-10   | 2h  |JG & PO   |
 |Zoom lecture with Fredrik.   |21-01-11   |PO & JG   |1h   |
 |Review all texts and checked spelling.  |21-01-11   |PO   |2h   |
+|Small fixes in presentation video.   |21-01-12   |PO   |1h   |
 
 <img src="/img/timelog_diagram.png" width="600">
