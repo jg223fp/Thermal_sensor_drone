@@ -2,11 +2,11 @@
 
 # Thermal sensor drone
 
-#### Members: Johan Gustafsson (jg223fp), Pierre Oskarsson (po222gu)
+#### Members: Pierre Oskarsson (po222gu), Johan Gustafsson (jg223fp)
 #### Program: Computer Science  
 #### Course:  Introducing project (1DT308)
 #### Grade ambition: A/B
-#### Date of submission: 21xx-xx-xx
+#### Date of submission: 2021-01-13
 
 ## Abstract
 The project aimed to develop a simple, yet effective, IoT-device that could help monitor heat generation in wide areas (e.g a disposal processing plant) and notify personel and/or ultimately the fire brigade.
