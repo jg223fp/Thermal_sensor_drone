@@ -76,9 +76,9 @@
 |Wrote Results and added images to README.    |21-01-07   |1h   |PO   |
 |Spelling check. Added code to setup.   |21-01-07   | 4h  |JG   |
 |Finishing team meeting and review of code. Added comments.  |21-01-10   | 2h  |JG & PO   |
-|Zoom lecture with Fredrik.   |21-01-11   |PO & JG   |1h   |
-|Review all texts and checked spelling.  |21-01-11   |PO   |2h   |
-|Small fixes in presentation video.   |21-01-12   |PO   |1h   |
+|Zoom lecture with Fredrik.   |21-01-11   |1h |PO & JG   |
+|Review all texts and checked spelling.  |21-01-11   |2h   |PO   |
+|Small fixes in presentation video.   |21-01-12   |1h   |PO   |
 |Small fixes in presentation video. New upload to Youtube.  |21-01-13   |1h   |PO   |
 
 <img src="/img/timelog_diagram.png" width="600">
